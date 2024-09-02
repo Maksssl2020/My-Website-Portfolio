@@ -4,46 +4,46 @@ import SkillCard from "../card/SkillCard.jsx";
 
 const firstColumnData = [
   {
-    iconLink: "src/assets/java-icon.svg",
+    iconLink: "src/assets/java-icon.SVG",
     skillName: "Java",
   },
   {
-    iconLink: "src/assets/spring-boot-icon.svg",
+    iconLink: "src/assets/spring-boot-icon.SVG",
     skillName: "Spring Boot",
   },
   {
-    iconLink: "src/assets/javascript-icon.svg",
+    iconLink: "src/assets/javascript-icon.SVG",
     skillName: "JavaScript",
   },
   {
-    iconLink: "src/assets/csharp-icon.svg",
+    iconLink: "src/assets/csharp-icon.SVG",
     skillName: "C#",
   },
   {
-    iconLink: "src/assets/postgresql-icon.svg",
+    iconLink: "src/assets/postgresql-icon.SVG",
     skillName: "PostgreSQL",
   },
 ];
 
 const secondColumnData = [
   {
-    iconLink: "src/assets/react-icon.svg",
+    iconLink: "src/assets/react-icon.SVG",
     skillName: "React",
   },
   {
-    iconLink: "src/assets/html-icon.svg",
+    iconLink: "src/assets/html-icon.SVG",
     skillName: "HTML",
   },
   {
-    iconLink: "src/assets/css-icon.svg",
+    iconLink: "src/assets/css-icon.SVG",
     skillName: "CSS",
   },
   {
-    iconLink: "src/assets/tailwind-icon.svg",
+    iconLink: "src/assets/tailwind-icon.SVG",
     skillName: "Tailwind CSS",
   },
   {
-    iconLink: "src/assets/github-icon.svg",
+    iconLink: "src/assets/github-icon.SVG",
     skillName: "Github",
   },
 ];

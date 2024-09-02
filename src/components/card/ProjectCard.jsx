@@ -18,13 +18,13 @@ const ProjectCard = ({ title, description, codeLink, websiteLink }) => {
           className={
             "w-[85%] h-[85%] inset-0 object-cover border-4 rounded-2xl"
           }
-          src="src/assets/Epic-Games-Inspired-Website.png"
+          src="src/assets/Epic-Games-Inspired-Website.PNG"
           alt={"Epic-Games-Inspired-Website"}
         />
       </div>
       <div
         className={
-          "text-white mt-[5%] flex flex-col font-medium gap-5 inset-0 ml-auto mr-[1%] w-[450px] absolute"
+          "text-white mt-[5%] flex flex-col font-medium gap-5 inset-0 ml-auto mr-[3%] w-[30%] absolute"
         }
       >
         <h1 className={"text-4xl font-semibold"}>{title}</h1>

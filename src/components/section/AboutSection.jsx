@@ -21,7 +21,7 @@ const AboutSection = () => {
         >
           <img
             className={"w-full h-full rounded-full inset-0 object-cover"}
-            src={"src/assets/My-Face.jpg"}
+            src={"src/assets/My-Face.JPG"}
             alt={"My-Face_picture"}
           />
         </div>
