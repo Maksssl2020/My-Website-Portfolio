@@ -2,6 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const SkillCard = ({ imageLink, title, backwardRotate }) => {
+  const [isHovered, setIsHovered] = React.useState(false);
+
   return (
     <motion.div
       whileHover={{
@@ -9,6 +11,8 @@ const SkillCard = ({ imageLink, title, backwardRotate }) => {
         rotate: backwardRotate ? 3 : -3,
         boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.3)",
       }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className={
         "border-custom-violet-100 group overflow-hidden relative w-[350px] h-[100px] border-2 flex justify-center items-center rounded-full"
@@ -26,9 +30,16 @@ const SkillCard = ({ imageLink, title, backwardRotate }) => {
         />
       </motion.div>
       <motion.p
-        whileHover={{
-          scale: 1.15,
-        }}
+        animate={
+          isHovered
+            ? {
+                background: "linear-gradient(90deg, #4386F4, #6A5ACD, #8A2BE2)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+              }
+            : { color: "white" }
+        }
         className={"text-white text-2xl font-bold ml-[15%]"}
       >
         {title}
