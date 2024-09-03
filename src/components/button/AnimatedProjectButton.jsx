@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const AnimatedButton = ({ title, link }) => {
+const AnimatedProjectButton = ({ title, link }) => {
   const [isHovered, setIsHovered] = React.useState(false);
 
   const handleButtonClick = () => {
@@ -34,4 +34,4 @@ const AnimatedButton = ({ title, link }) => {
   );
 };
 
-export default AnimatedButton;
+export default AnimatedProjectButton;

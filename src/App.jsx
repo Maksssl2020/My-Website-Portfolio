@@ -9,7 +9,7 @@ function App() {
       element: <AppLayout />,
       children: [
         {
-          path: "/",
+          path: "/My-Website-Portfolio",
           element: <Home />,
         },
       ],
