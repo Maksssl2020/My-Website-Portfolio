@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    scroll-behavior: smooth;
+}
+
 .violet-background-gradient {
     background: linear-gradient(65deg, #4386F4, #6A5ACD, #8A2BE2, #3216BC)
 }

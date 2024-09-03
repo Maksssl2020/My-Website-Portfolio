@@ -1,6 +1,10 @@
 import React from "react";
 import SectionBanner from "../banner/SectionBanner.jsx";
 import SkillCard from "../card/SkillCard.jsx";
+import Section from "./Section.jsx";
+import { AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import SkillsList from "../list/SkillsList.jsx";
 
 const firstColumnData = [
   {
@@ -49,36 +53,24 @@ const secondColumnData = [
 ];
 
 const SkillsSection = () => {
+  const [isSectionVisible, setIsSectionVisible] = React.useState(false);
+
   return (
-    <div
-      className={
-        "w-full h-[100vh] py-16 flex flex-col gap-16 items-center justify-center"
-      }
-    >
+    <Section id={"skills"} setVisibility={setIsSectionVisible}>
       <SectionBanner title={"skills"} />
       <div className={"grid grid-cols-2 w-[1000px] justify-between"}>
-        <div className={"flex flex-col gap-6"}>
-          {firstColumnData.map((data, index) => (
-            <SkillCard
-              key={index}
-              imageLink={data.iconLink}
-              title={data.skillName}
-              backwardRotate={index % 2 === 0}
-            />
-          ))}
-        </div>
-        <div className={"flex flex-col gap-6 ml-auto"}>
-          {secondColumnData.map((data, index) => (
-            <SkillCard
-              key={index}
-              imageLink={data.iconLink}
-              title={data.skillName}
-              backwardRotate={index % 2 !== 0}
-            />
-          ))}
-        </div>
+        <SkillsList
+          listData={firstColumnData}
+          hiddenSide={"left"}
+          isVisible={isSectionVisible}
+        />
+        <SkillsList
+          listData={secondColumnData}
+          hiddenSide={"right"}
+          isVisible={isSectionVisible}
+        />
       </div>
-    </div>
+    </Section>
   );
 };
 

@@ -1,20 +1,23 @@
 import React from "react";
 import SectionBanner from "../banner/SectionBanner.jsx";
+import Section from "./Section.jsx";
+import { motion } from "framer-motion";
 
 const AboutSection = () => {
+  const [isSectionVisible, setIsSectionVisible] = React.useState(false);
+
   return (
-    <div
-      className={
-        "w-full h-[100vh] py-16 flex flex-col gap-16 items-center justify-center"
-      }
-    >
+    <Section id={"about"} setVisibility={setIsSectionVisible}>
       <SectionBanner title={"about"} />
       <div
         className={
           "flex justify-between rounded-l-full items-center w-[1250px]"
         }
       >
-        <div
+        <motion.div
+          initial={{ x: "-55%", opacity: 0 }}
+          animate={isSectionVisible && { x: "0%", opacity: 1 }}
+          transition={{ duration: 1.0 }}
           className={
             "size-[500px] rounded-full border-4 border-custom-violet-100"
           }
@@ -24,8 +27,11 @@ const AboutSection = () => {
             src={"src/assets/My-Face.JPG"}
             alt={"My-Face_picture"}
           />
-        </div>
-        <div
+        </motion.div>
+        <motion.div
+          initial={{ x: "55%", opacity: 0 }}
+          animate={isSectionVisible && { x: "0%", opacity: 1 }}
+          transition={{ duration: 1.0 }}
           className={
             "font-medium w-[550px] relative tracking-normal text-white text-2xl flex flex-col gap-4"
           }
@@ -40,9 +46,9 @@ const AboutSection = () => {
               "I'm highly detail-oriented and strive for excellence in everything I do. My goal is to become a full-stack developer, combining my love for both front-end and back-end development to create seamless, efficient, and user-friendly applications."
             }
           </p>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </Section>
   );
 };
 
