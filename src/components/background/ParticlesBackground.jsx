@@ -13,6 +13,10 @@ const ParticlesBackground = () => {
     });
   }, []);
 
+  if (!init) {
+    return;
+  }
+
   return (
     <Particles
       className={"fixed -z-10"}
