@@ -41,7 +41,7 @@ const ParticlesBackground = () => {
           move: {
             direction: "none",
             enable: true,
-            speed: 1,
+            speed: 0.5,
           },
           opacity: {
             value: 0.5,

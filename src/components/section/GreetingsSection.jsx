@@ -1,10 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import ArrowDownIcon from "../../icons/ArrowDownIcon.jsx";
 import Section from "./Section.jsx";
 import AnimatedGreetingButton from "../button/AnimatedGreetingButton.jsx";
 
 const GreetingsSection = () => {
+  const [isSectionVisible, setIsSectionVisible] = React.useState(false);
   const sentence = "I'm a full stack web developer.";
   const sentenceLetters = sentence.split("");
 
@@ -22,27 +22,36 @@ const GreetingsSection = () => {
   };
 
   return (
-    <Section id={"home"}>
+    <Section id={"home"} setVisibility={setIsSectionVisible}>
       <div className={"flex flex-col text-white text-center gap-4"}>
-        <h1 className={"text-6xl font-medium"}>
+        <h1
+          className={
+            "3xs:text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium"
+          }
+        >
           Hello, I'm <span className={"violet-text-gradient"}>Maks</span>.
         </h1>
-        <h1 className={"text-6xl font-medium"}>
+        <h1
+          className={
+            "3xs:text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium"
+          }
+        >
           <motion.span
             className={"inline-block"}
             variants={lettersContainer}
             initial="hidden"
-            animate="visible"
+            animate={isSectionVisible ? "visible" : "hidden"}
           >
-            {sentenceLetters.map((letter, index) => (
-              <motion.span
-                key={index}
-                variants={child}
-                className={"inline-block"}
-              >
-                {letter === " " ? "\u00A0" : letter}
-              </motion.span>
-            ))}
+            {isSectionVisible &&
+              sentenceLetters.map((letter, index) => (
+                <motion.span
+                  key={index}
+                  variants={child}
+                  className={"inline-block"}
+                >
+                  {letter === " " ? "\u00A0" : letter}
+                </motion.span>
+              ))}
           </motion.span>
         </h1>
         <AnimatedGreetingButton />
