@@ -11,20 +11,27 @@ const SkillCard = ({ imageLink, title, backwardRotate }) => {
         rotate: backwardRotate ? 3 : -3,
         boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.3)",
       }}
+      whileTap={{
+        scale: 1.15,
+        rotate: backwardRotate ? 3 : -3,
+        boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.3)",
+      }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className={
-        "border-custom-violet-100 group overflow-hidden relative w-[350px] h-[100px] border-2 flex justify-center items-center rounded-full"
+        "border-custom-violet-100 select-none group overflow-hidden relative max-sm:size-[100px] sm:w-[225px] sm:h-[70px] md:w-[275px] md:h-[85px] lg:w-[350px] lg:h-[100px] border-2 flex justify-center items-center rounded-full"
       }
     >
       <motion.div
         className={
-          "border-r-2 absolute bg-custom-gray-100 inset-0 -z-10 self-center border-custom-violet-100 size-[100px] flex justify-center items-center rounded-full"
+          "sm:border-r-2 absolute bg-custom-gray-100 inset-0 -z-10 self-center border-custom-violet-100  max-sm:size-full sm:size-[70px] md:size-[85px] lg:size-[100px] flex justify-center items-center rounded-full"
         }
       >
         <img
-          className={"size-[60px] inset-0 object-cover self-center"}
+          className={
+            "max-sm:size-[65px] sm:size-[40px] md:size-[50px] lg:size-[60px] inset-0 object-cover self-center"
+          }
           src={imageLink}
           alt={`${title}-icon`}
         />
@@ -36,11 +43,14 @@ const SkillCard = ({ imageLink, title, backwardRotate }) => {
                 background: "linear-gradient(90deg, #4386F4, #6A5ACD, #8A2BE2)",
                 WebkitBackgroundClip: "text",
                 backgroundClip: "text",
-                color: "transparent",
+                color: "#00000000",
               }
-            : { color: "white" }
+            : { color: "#FFFFFF" }
         }
-        className={"text-white text-2xl font-bold ml-[15%]"}
+        transition={{ duration: 0.3 }}
+        className={
+          "max-sm:hidden sm:text-lg text-white md:text-xl lg:text-2xl font-bold ml-[15%]"
+        }
       >
         {title}
       </motion.p>

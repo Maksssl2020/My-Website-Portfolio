@@ -1,53 +1,50 @@
 import React from "react";
 import SectionBanner from "../banner/SectionBanner.jsx";
-import SkillCard from "../card/SkillCard.jsx";
 import Section from "./Section.jsx";
-import { AnimatePresence } from "framer-motion";
-import { motion } from "framer-motion";
 import SkillsList from "../list/SkillsList.jsx";
 
 const firstColumnData = [
   {
-    iconLink: "src/assets/java-icon.SVG",
+    iconLink: "assets/java-icon.SVG",
     skillName: "Java",
   },
   {
-    iconLink: "src/assets/spring-boot-icon.SVG",
+    iconLink: "assets/spring-boot-icon.SVG",
     skillName: "Spring Boot",
   },
   {
-    iconLink: "src/assets/javascript-icon.SVG",
+    iconLink: "assets/javascript-icon.SVG",
     skillName: "JavaScript",
   },
   {
-    iconLink: "src/assets/csharp-icon.SVG",
+    iconLink: "assets/csharp-icon.SVG",
     skillName: "C#",
   },
   {
-    iconLink: "src/assets/postgresql-icon.SVG",
+    iconLink: "assets/postgresql-icon.SVG",
     skillName: "PostgreSQL",
   },
 ];
 
 const secondColumnData = [
   {
-    iconLink: "src/assets/react-icon.SVG",
+    iconLink: "assets/react-icon.SVG",
     skillName: "React",
   },
   {
-    iconLink: "src/assets/html-icon.SVG",
+    iconLink: "assets/html-icon.SVG",
     skillName: "HTML",
   },
   {
-    iconLink: "src/assets/css-icon.SVG",
+    iconLink: "assets/css-icon.SVG",
     skillName: "CSS",
   },
   {
-    iconLink: "src/assets/tailwind-icon.SVG",
+    iconLink: "assets/tailwind-icon.SVG",
     skillName: "Tailwind CSS",
   },
   {
-    iconLink: "src/assets/github-icon.SVG",
+    iconLink: "assets/github-icon.SVG",
     skillName: "Github",
   },
 ];
@@ -58,7 +55,11 @@ const SkillsSection = () => {
   return (
     <Section id={"skills"} setVisibility={setIsSectionVisible}>
       <SectionBanner title={"skills"} />
-      <div className={"grid grid-cols-2 w-[1000px] justify-between"}>
+      <div
+        className={
+          "grid grid-cols-2 max-lg:w-[80%] lg:w-[950px] xl:w-[1000px] justify-between"
+        }
+      >
         <SkillsList
           listData={firstColumnData}
           hiddenSide={"left"}

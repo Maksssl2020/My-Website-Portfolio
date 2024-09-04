@@ -1,5 +1,5 @@
 import React from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import SkillCard from "../card/SkillCard.jsx";
 import List from "./List.jsx";
 

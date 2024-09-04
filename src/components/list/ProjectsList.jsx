@@ -5,7 +5,10 @@ import ProjectCard from "../card/ProjectCard.jsx";
 
 const ProjectsList = ({ listData, isVisible }) => {
   return (
-    <List className={`w-full flex flex-col gap-6`} isVisible={isVisible}>
+    <List
+      className={`w-full flex flex-col gap-6 overflow-x-hidden`}
+      isVisible={isVisible}
+    >
       {listData.map((data, index) => (
         <motion.li
           variants={{

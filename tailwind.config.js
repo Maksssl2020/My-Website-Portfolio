@@ -10,6 +10,11 @@ export default {
         "custom-violet-100": "#4386F4",
         "custom-gray-100": "#282828",
       },
+      screens: {
+        xs: "540px",
+        "2xs": "440px",
+        "3xs": "350px",
+      },
     },
   },
   plugins: [],

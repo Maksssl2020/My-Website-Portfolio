@@ -11,7 +11,7 @@ const AboutSection = () => {
       <SectionBanner title={"about"} />
       <div
         className={
-          "flex justify-between rounded-l-full items-center w-[1250px]"
+          "flex max-xl:flex-col max-xl:gap-20 xl:justify-between rounded-l-full items-center lg:w-[1000px] xl:w-[1250px]"
         }
       >
         <motion.div
@@ -19,12 +19,12 @@ const AboutSection = () => {
           animate={isSectionVisible && { x: "0%", opacity: 1 }}
           transition={{ duration: 1.0 }}
           className={
-            "size-[500px] rounded-full border-4 border-custom-violet-100"
+            "max-2xs:size-[250px] max-sm:size-[325px] sm:size-[400px] md:size-[450px] lg:size-[500px] rounded-full border-4 border-custom-violet-100"
           }
         >
           <img
             className={"w-full h-full rounded-full inset-0 object-cover"}
-            src={"src/assets/My-Face.JPG"}
+            src="assets/My-Face.JPG"
             alt={"My-Face_picture"}
           />
         </motion.div>
@@ -33,7 +33,7 @@ const AboutSection = () => {
           animate={isSectionVisible && { x: "0%", opacity: 1 }}
           transition={{ duration: 1.0 }}
           className={
-            "font-medium w-[550px] relative tracking-normal text-white text-2xl flex flex-col gap-4"
+            "font-medium max-xl:w-[80%] xl:w-[500px] max-2xs:text-sm 2xs:text-[16px] xs:text-lg sm:text-xl lg:text-2xl relative tracking-normal text-white flex flex-col gap-4"
           }
         >
           <p className={"violet-text-gradient"}>

@@ -12,7 +12,7 @@ const SectionBanner = ({ title }) => {
   }, []);
 
   return (
-    <div className={"flex flex-col items-center"}>
+    <div className={"flex flex-col items-center select-none"}>
       <motion.div
         initial={{ x: `${animatedLineWidth / 2}px` }}
         animate={{
@@ -23,9 +23,16 @@ const SectionBanner = ({ title }) => {
           ],
         }}
         transition={{ duration: 5, repeat: Infinity }}
-        className={"w-[50px] rounded-full h-[4px] bg-custom-violet-100"}
+        className={
+          "max-xs:w-[20px] xs:w-[30px] lg:w-[50px] rounded-full max-sm:h-[3px] sm:h-[4px] bg-custom-violet-100"
+        }
       />
-      <h1 ref={titleRef} className={"text-6xl text-white uppercase my-4"}>
+      <h1
+        ref={titleRef}
+        className={
+          "w-auto max-xs:text-3xl xs:text-4xl lg:text-6xl text-white uppercase my-4"
+        }
+      >
         {title}
       </h1>
       <motion.div
@@ -38,7 +45,9 @@ const SectionBanner = ({ title }) => {
           ],
         }}
         transition={{ duration: 5, repeat: Infinity }}
-        className={"w-[50px] rounded-full h-[4px] bg-custom-violet-100"}
+        className={
+          "max-xs:w-[20px] xs:w-[30px] lg:w-[50px] rounded-full max-sm:h-[3px] sm:h-[4px] bg-custom-violet-100"
+        }
       />
     </div>
   );
