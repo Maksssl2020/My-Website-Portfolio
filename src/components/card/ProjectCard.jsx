@@ -23,7 +23,7 @@ const ProjectCard = ({
         className={`w-[70%] max-xs:px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 h-full flex justify-center items-center violet-background-gradient ${isFlipped ? "ml-auto md:rounded-r-xl" : "md:rounded-l-xl"}`}
       >
         <img
-          className={"h-[75%] w-full object-cover md:border-4 md:rounded-2xl"}
+          className={"h-[85%] w-full object-cover md:border-4 md:rounded-2xl"}
           src={image}
           alt={"Epic-Games-Inspired-Website"}
         />
