@@ -24,6 +24,14 @@ const firstColumnData = [
     iconLink: "assets/postgresql-icon.SVG",
     skillName: "PostgreSQL",
   },
+  {
+    iconLink: "assets/angular-icon.SVG",
+    skillName: "Angular",
+  },
+  {
+    iconLink: "assets/dotnet-icon.SVG",
+    skillName: ".NET",
+  },
 ];
 
 const secondColumnData = [
@@ -46,6 +54,14 @@ const secondColumnData = [
   {
     iconLink: "assets/github-icon.SVG",
     skillName: "Github",
+  },
+  {
+    iconLink: "assets/scss-icon.SVG",
+    skillName: "SCSS",
+  },
+  {
+    iconLink: "assets/typescript-icon.SVG",
+    skillName: "TypeScript",
   },
 ];
 
