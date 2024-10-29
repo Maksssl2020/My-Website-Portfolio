@@ -5,6 +5,13 @@ import ProjectsList from "../list/ProjectsList.jsx";
 
 const projectsInfoData = [
   {
+    title: "Taskly Web Application",
+    image: "assets/taskly.png",
+    description:
+      "Still in progress. It'll be a managing tasks app. To use it, user have to create an account. For that project I use C#, .NET, Entity Framework, Angular, JWT, SCSS and SQLite.",
+    codeLink: "https://github.com/Maksssl2020/ManagingTasksWebApp.git",
+  },
+  {
     title: "Fullstack DST Web Application",
     image: "assets/TEST.png",
     description:

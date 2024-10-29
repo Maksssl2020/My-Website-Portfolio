@@ -11,7 +11,7 @@ const Section = ({ id, children, setVisibility }) => {
       {
         root: null,
         rootMargin: "0px",
-        threshold: 0.3,
+        threshold: 0.1,
       },
     );
 
