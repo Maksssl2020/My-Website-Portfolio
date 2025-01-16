@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 
-const SectionBanner = ({ title }) => {
+const SectionBanner = ({ sectionNumber, title }) => {
   const [animatedLineWidth, setAnimatedLineWidth] = React.useState(0);
   const titleRef = React.useRef(null);
 
@@ -12,7 +12,7 @@ const SectionBanner = ({ title }) => {
   }, []);
 
   return (
-    <div className={"flex flex-col items-center select-none"}>
+    <div className={"flex select-none flex-col items-center"}>
       <motion.div
         initial={{ x: `${animatedLineWidth / 2}px` }}
         animate={{
@@ -24,15 +24,18 @@ const SectionBanner = ({ title }) => {
         }}
         transition={{ duration: 5, repeat: Infinity }}
         className={
-          "max-xs:w-[20px] xs:w-[30px] lg:w-[50px] rounded-full max-sm:h-[3px] sm:h-[4px] bg-custom-violet-100"
+          "rounded-full bg-custom-blue-100 max-sm:h-[3px] max-xs:w-[20px] xs:w-[30px] sm:h-[4px] lg:w-[50px]"
         }
       />
       <h1
         ref={titleRef}
         className={
-          "w-auto max-xs:text-3xl xs:text-4xl lg:text-6xl text-white uppercase my-4"
+          "my-4 w-auto uppercase text-white max-xs:text-3xl xs:text-4xl lg:text-6xl"
         }
       >
+        <span
+          className={"mr-6 text-custom-blue-100"}
+        >{`0${sectionNumber}.`}</span>
         {title}
       </h1>
       <motion.div
@@ -46,7 +49,7 @@ const SectionBanner = ({ title }) => {
         }}
         transition={{ duration: 5, repeat: Infinity }}
         className={
-          "max-xs:w-[20px] xs:w-[30px] lg:w-[50px] rounded-full max-sm:h-[3px] sm:h-[4px] bg-custom-violet-100"
+          "rounded-full bg-custom-blue-100 max-sm:h-[3px] max-xs:w-[20px] xs:w-[30px] sm:h-[4px] lg:w-[50px]"
         }
       />
     </div>

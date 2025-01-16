@@ -48,7 +48,7 @@ const Header = () => {
   return (
     <header
       className={
-        "w-full sticky left-0 top-0 z-10 h-[100px] bg-custom-gray-100 px-8 py-4"
+        "w-full gray-dark-gray-background-gradient sticky left-0 top-0 z-10 h-[100px] px-8 py-4"
       }
     >
       <nav
@@ -85,10 +85,10 @@ const Header = () => {
               {headerData.map((data, index) => (
                 <motion.a
                   key={index}
-                  whileHover={{ color: "#4386F4", cursor: "pointer" }}
+                  whileHover={{ color: "#0066FF", cursor: "pointer" }}
                   animate={
                     activeSection === data.toLowerCase()
-                      ? { color: "#4386F4" }
+                      ? { color: "#0066FF" }
                       : { color: "#FFFFFF" }
                   }
                   href={`#${data.toLowerCase()}`}

@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer
       className={
-        "w-full h-[150px] relative mt-16 bg-custom-gray-100 flex justify-center items-center"
+        "w-full h-[150px] relative mt-16 gray-dark-gray-background-gradient flex justify-center items-center"
       }
     >
       <motion.a

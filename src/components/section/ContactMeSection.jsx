@@ -8,7 +8,7 @@ const ContactMeSection = () => {
 
   return (
     <Section id={"contact"} setVisibility={setIsSectionVisible}>
-      <SectionBanner title={"Contact Me"} />
+      <SectionBanner sectionNumber={"4"} title={"Contact Me"} />
       <ContactMeForm isVisible={isSectionVisible} />
     </Section>
   );

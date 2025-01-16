@@ -45,7 +45,7 @@ const ContactMeForm = ({ isVisible }) => {
       animate={isVisible && { opacity: 2 }}
       transition={{ duration: 1.0 }}
       className={
-        "max-sm:w-full sm:w-[575px] md:w-[600px] lg:w-[650px] h-auto sm:border-4 border-custom-violet-100 rounded-xl p-8 flex flex-col gap-6"
+        "flex h-auto flex-col gap-6 rounded-xl border-custom-blue-100 p-8 max-sm:w-full sm:w-[575px] sm:border-4 md:w-[600px] lg:w-[650px]"
       }
       ref={form}
       onSubmit={handleSubmit(sendEmail)}
@@ -85,16 +85,16 @@ const ContactMeForm = ({ isVisible }) => {
         type={"submit"}
         whileHover={{
           color: "#FFFFFF",
-          background: "#4386F4",
+          background: "#0066FF",
           borderColor: "#FFFFFF",
         }}
         style={{
-          color: "#4386F4",
-          background: "#1A1A1A",
-          borderColor: "#4386F4",
+          color: "#0066FF",
+          background: "#000000",
+          borderColor: "#0066FF",
         }}
         className={
-          "w-full max-xs:h-[45px] xs:h-[50px] sm:h-[55px] md:h-[65px] lg:h-[75px] mt-8 border-4 text-white uppercase 3xs:text-sm xs:text-xl md:text-2xl lg:text-3xl font-bold tracking-widest rounded-xl"
+          "mt-8 w-full rounded-xl border-4 font-bold uppercase tracking-widest text-white max-xs:h-[45px] 3xs:text-sm xs:h-[50px] xs:text-xl sm:h-[55px] md:h-[65px] md:text-2xl lg:h-[75px] lg:text-3xl"
         }
       >
         SUBMIT

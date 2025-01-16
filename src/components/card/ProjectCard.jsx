@@ -9,6 +9,7 @@ const ProjectCard = ({
   codeLink,
   websiteLink,
   isFlipped,
+  tags,
 }) => {
   return (
     <motion.div
@@ -16,39 +17,35 @@ const ProjectCard = ({
       whileTap={{ scale: 0.95 }}
       transition={{ duration: 0.3 }}
       className={
-        "aspect-video w-full md:mx-6 xl:w-[1250px] xl:h-[650px] relative flex md:border-4 md:rounded-2xl"
+        "relative flex h-[250px] w-full cursor-pointer items-center justify-between rounded-lg px-4 md:border-2 xl:w-[1000px]"
       }
     >
       <div
-        className={`w-[70%] max-xs:px-4 xs:px-6 sm:px-8 md:px-12 lg:px-16 h-full flex justify-center items-center violet-background-gradient ${isFlipped ? "ml-auto md:rounded-r-xl" : "md:rounded-l-xl"}`}
+        className={`flex h-full w-auto flex-col gap-4 py-2 ${isFlipped && "ml-auto"}`}
+      >
+        <h1 className={"h-[35px] text-3xl font-medium text-white"}>{title}</h1>
+        <ul className={"flex h-auto w-[500px] flex-wrap gap-2 text-white"}>
+          {tags.map((data, index) => (
+            <li
+              key={index}
+              className={
+                "pink-violet-blue-background-gradient rounded-full px-4 py-1 font-bold"
+              }
+            >
+              {data}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div
+        className={`absolute flex aspect-video h-full items-center justify-center ${isFlipped ? "left-0" : "right-0"}`}
       >
         <img
-          className={"h-[85%] w-full object-cover md:border-4 md:rounded-2xl"}
+          className={`h-full w-full rounded-r-md object-cover ${isFlipped ? "rounded-l-lg" : "rounded-r-lg"}`}
           src={image}
-          alt={"Epic-Games-Inspired-Website"}
+          alt={title}
         />
-      </div>
-      <div
-        className={`text-white mt-[5%] flex flex-col font-medium 3xs:gap-1 sm:gap-3 md:gap-4 lg:gap-5 inset-0 w-[30%] absolute ${isFlipped ? "mr-auto ml-[3%]" : "ml-auto mr-[3%]"}`}
-      >
-        <h1
-          className={
-            "max-3xs:text-[8px] 3xs:text-[10px] 2xs:text-sm xs:text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold select-none"
-          }
-        >
-          {title}
-        </h1>
-        <p
-          className={
-            "max-3xs:text-[5px] 3xs:text-[6px] xs:text-[10px] sm:text-sm md:text-lg xl:text-xl select-none"
-          }
-        >
-          {description}
-        </p>
-        <AnimatedProjectButton title={"See Code"} link={codeLink} />
-        {websiteLink && (
-          <AnimatedProjectButton title={"See Website"} link={websiteLink} />
-        )}
       </div>
     </motion.div>
   );

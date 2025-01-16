@@ -6,7 +6,7 @@ import ProjectCard from "../card/ProjectCard.jsx";
 const ProjectsList = ({ listData, isVisible }) => {
   return (
     <List
-      className={`w-full flex flex-col gap-6 overflow-x-hidden`}
+      className={`flex w-full flex-col gap-6 overflow-x-hidden`}
       isVisible={isVisible}
     >
       {listData.map((data, index) => (
@@ -19,7 +19,7 @@ const ProjectsList = ({ listData, isVisible }) => {
             },
           }}
           transition={{ type: "just", duration: 0.5 }}
-          className={"flex justify-center items-center"}
+          className={"flex items-center justify-center"}
           key={index}
         >
           <ProjectCard
@@ -29,6 +29,7 @@ const ProjectsList = ({ listData, isVisible }) => {
             description={data.description}
             codeLink={data.codeLink}
             websiteLink={data.websiteLink}
+            tags={data.tags}
             isFlipped={index % 2 !== 0}
           />
         </motion.li>

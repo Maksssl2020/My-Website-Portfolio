@@ -10,7 +10,7 @@ const FormInput = ({
   errors,
 }) => {
   return (
-    <div className={"flex flex-col text-white gap-4"}>
+    <div className={"flex flex-col gap-4 text-white"}>
       <AnimatePresence>
         <label
           className={
@@ -22,21 +22,21 @@ const FormInput = ({
         {inputType === "input" ? (
           <motion.input
             key={"input"}
-            whileFocus={{ borderColor: "#4386F4" }}
+            whileFocus={{ borderColor: "#0066FF" }}
             style={{ borderColor: "#FFFFFF" }}
             type={valueType}
             className={
-              "max-xs:h-[40px] xs:h-[50px] px-4 rounded-xl focus:outline-none bg-custom-gray-100 border-2"
+              "gray-dark-gray-background-gradient rounded-xl border-2 px-4 focus:outline-none max-xs:h-[40px] xs:h-[50px]"
             }
             {...register}
           />
         ) : (
           <motion.textarea
             key={"textarea"}
-            whileFocus={{ borderColor: "#4386F4" }}
+            whileFocus={{ borderColor: "#0066FF" }}
             style={{ borderColor: "#FFFFFF" }}
             className={
-              "h-[150px] resize-none p-4 rounded-xl focus:outline-none bg-custom-gray-100 border-2"
+              "gray-dark-gray-background-gradient h-[150px] resize-none rounded-xl border-2 p-4 focus:outline-none"
             }
             {...register}
           />
@@ -47,7 +47,7 @@ const FormInput = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className={"max-xs:text-xs xs:text-sm md:text-lg ml-3 font-medium"}
+            className={"ml-3 font-medium max-xs:text-xs xs:text-sm md:text-lg"}
           >
             {errors}
           </motion.label>

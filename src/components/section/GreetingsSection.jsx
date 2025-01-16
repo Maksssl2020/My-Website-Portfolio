@@ -23,17 +23,18 @@ const GreetingsSection = () => {
 
   return (
     <Section id={"home"} setVisibility={setIsSectionVisible}>
-      <div className={"flex flex-col text-white text-center gap-4"}>
+      <div className={"flex flex-col gap-4 text-center text-white"}>
         <h1
           className={
-            "3xs:text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium"
+            "font-medium 3xs:text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
           }
         >
-          Hello, I'm <span className={"violet-text-gradient"}>Maks</span>.
+          Hello, I'm{" "}
+          <span className={"pink-violet-blue-text-gradient"}>Maks</span>.
         </h1>
         <h1
           className={
-            "3xs:text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium"
+            "font-medium 3xs:text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
           }
         >
           <motion.span
