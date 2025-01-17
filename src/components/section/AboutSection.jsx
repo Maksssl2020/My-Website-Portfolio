@@ -23,7 +23,7 @@ const AboutSection = () => {
             "relative flex flex-col gap-4 font-normal tracking-normal max-xl:w-[80%] max-2xs:text-sm 2xs:text-[16px] xs:text-lg sm:text-xl lg:text-2xl xl:w-[500px]"
           }
         >
-          <p className={"text-[#CCCCCC]"}>
+          <p className={"text-custom-gray-200"}>
             I'm an <span className={"text-custom-blue-100"}>IT student</span>{" "}
             with a passion for learning new things, especially when it comes to
             technology. My favorite programming language is{" "}
@@ -35,7 +35,7 @@ const AboutSection = () => {
             delve into science, as well as playing computer games, watching
             movies, and listening to music.
           </p>
-          <p className={"text-[#CCCCCC]"}>
+          <p className={"text-custom-gray-200"}>
             I'm{" "}
             <span className={"text-custom-blue-100"}>
               highly detail-oriented and strive for excellence

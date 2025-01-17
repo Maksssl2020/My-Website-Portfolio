@@ -1,15 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../components/header/Header.jsx";
 import Footer from "../components/footer/Footer.jsx";
 import ParticlesBackground from "../components/background/ParticlesBackground.jsx";
+import StickyNavBar from "../components/NavigationBar/StickyNavBar.jsx";
 
 const AppLayout = () => {
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollPositionY, setLastScrollPositionY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollPositionY) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+
+      setLastScrollPositionY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollPositionY]);
+
   return (
     <div>
-      <Header />
+      <Header isVisible={isVisible} />
       <ParticlesBackground />
-      <Outlet />
+      <div className={"relative flex flex-col"}>
+        <StickyNavBar isVisible={isVisible} />
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

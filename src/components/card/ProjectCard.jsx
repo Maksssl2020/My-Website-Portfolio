@@ -1,51 +1,81 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import AnimatedProjectButton from "../button/AnimatedProjectButton.jsx";
+import { useNavigate } from "react-router-dom";
+import useTextareaResize from "../../hooks/useTextareaResize.js";
 
-const ProjectCard = ({
-  title,
-  image,
-  description,
-  codeLink,
-  websiteLink,
-  isFlipped,
-  tags,
-}) => {
+const ProjectCard = ({ title, image, description, pageName, isFlipped }) => {
+  const [isImageContainerHovered, setIsImageContainerHovered] = useState(false);
+  const [isTextareaHovered, setIsTextAreaHovered] = useState(false);
+  const textareaRef = useRef(null);
+  const navigate = useNavigate();
+
+  useTextareaResize(textareaRef, description);
+
   return (
     <motion.div
-      whileHover={{ scale: 0.95 }}
-      whileTap={{ scale: 0.95 }}
-      transition={{ duration: 0.3 }}
-      className={
-        "relative flex h-[250px] w-full cursor-pointer items-center justify-between rounded-lg px-4 md:border-2 xl:w-[1000px]"
-      }
+      className={`relative flex h-[380px] w-full flex-col items-center justify-between rounded-lg`}
     >
       <div
-        className={`flex h-full w-auto flex-col gap-4 py-2 ${isFlipped && "ml-auto"}`}
+        onMouseEnter={() => setIsImageContainerHovered(true)}
+        onMouseLeave={() => setIsImageContainerHovered(false)}
+        className={`absolute flex h-[380px] w-[565px] cursor-pointer items-center justify-center overflow-hidden rounded-t-lg ${isFlipped ? "right-0" : "left-0"}`}
+        onClick={() => navigate(pageName)}
       >
-        <h1 className={"h-[35px] text-3xl font-medium text-white"}>{title}</h1>
-        <ul className={"flex h-auto w-[500px] flex-wrap gap-2 text-white"}>
-          {tags.map((data, index) => (
-            <li
-              key={index}
-              className={
-                "pink-violet-blue-background-gradient rounded-full px-4 py-1 font-bold"
-              }
-            >
-              {data}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div
-        className={`absolute flex aspect-video h-full items-center justify-center ${isFlipped ? "left-0" : "right-0"}`}
-      >
-        <img
-          className={`h-full w-full rounded-r-md object-cover ${isFlipped ? "rounded-l-lg" : "rounded-r-lg"}`}
+        <motion.div
+          animate={isImageContainerHovered ? { opacity: 0 } : { opacity: 0.3 }}
+          transition={{ duration: 0.3 }}
+          className={
+            "absolute z-10 h-full w-full rounded-lg bg-custom-blue-100"
+          }
+        />
+        <motion.img
+          animate={isImageContainerHovered ? { scale: 1.05 } : { scale: 1.0 }}
+          transition={{ duration: 0.3 }}
+          className={`h-full w-full rounded-lg object-cover`}
           src={image}
           alt={title}
         />
+      </div>
+      <div
+        className={`z-10 flex h-full w-[500px] flex-col justify-center gap-4 pl-4 ${isFlipped ? "mr-auto" : "ml-auto"}`}
+      >
+        <h1
+          className={`text-2xl font-medium text-white ${isFlipped ? "mr-auto" : "ml-auto"}`}
+        >
+          {title}
+        </h1>
+        <motion.textarea
+          onMouseEnter={() => setIsTextAreaHovered(true)}
+          onMouseLeave={() => setIsTextAreaHovered(false)}
+          animate={
+            isTextareaHovered
+              ? { boxShadow: "0px 8px 15px #420a66" }
+              : { boxShadow: "0px 0px 0px #420a66" }
+          }
+          transition={{
+            duration: 0.3,
+          }}
+          readOnly
+          ref={textareaRef}
+          value={description}
+          className={
+            "text-custom-gray-200 project-card-description-background-gradient h-auto w-full resize-none rounded-lg px-4 py-2 text-lg font-medium outline-none"
+          }
+        />
+        <div className={"relative flex h-auto w-auto"}>
+          <div
+            className={`absolute bottom-0 -z-10 h-[45px] w-[135px] rounded-sm bg-custom-blue-100 ${!isFlipped && "right-0"}`}
+          />
+          <motion.button
+            whileHover={
+              isFlipped ? { x: "2%", y: "-4%" } : { x: "-2%", y: "-4%" }
+            }
+            className={`mt-6 h-[45px] w-[135px] rounded-sm border-2 border-custom-blue-100 bg-custom-black-100 px-6 py-2 font-medium text-custom-blue-100 ${isFlipped ? "mr-auto" : "ml-auto"}`}
+            onClick={() => navigate(pageName)}
+          >
+            Show More
+          </motion.button>
+        </div>
       </div>
     </motion.div>
   );

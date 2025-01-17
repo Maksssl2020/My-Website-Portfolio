@@ -7,7 +7,12 @@ const AnimatedGreetingButton = () => {
 
   return (
     <motion.a
-      whileHover={{ scale: 1.1, cursor: "pointer" }}
+      animate={
+        isHovered
+          ? { scale: 1.1, boxShadow: "0px 8px 15px #0066FF" }
+          : { scale: 1.0, boxShadow: "0px 0px 0px #000000" }
+      }
+      transition={{ duration: 0.3 }}
       href="#about"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

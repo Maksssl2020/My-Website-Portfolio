@@ -2,6 +2,8 @@ import React from "react";
 import SectionBanner from "../banner/SectionBanner.jsx";
 import Section from "./Section.jsx";
 import SkillCard from "../card/SkillCard.jsx";
+import { AnimatePresence, motion } from "framer-motion";
+import SkillsList from "../list/SkillsList.jsx";
 
 const skilssData = [
   {
@@ -77,20 +79,7 @@ const SkillsSection = () => {
   return (
     <Section id={"skills"} setVisibility={setIsSectionVisible}>
       <SectionBanner sectionNumber={"2"} title={"skills"} />
-      <div
-        className={
-          "grid grid-cols-3 justify-between gap-6 max-lg:w-[80%] lg:w-[950px] xl:w-[1000px]"
-        }
-      >
-        {skilssData.map((data, index) => (
-          <SkillCard
-            key={index}
-            title={data.skillName}
-            imageLink={data.iconLink}
-            skillDocs={data.skillDocs}
-          />
-        ))}
-      </div>
+      <SkillsList listData={skilssData} isVisible={isSectionVisible} />
     </Section>
   );
 };

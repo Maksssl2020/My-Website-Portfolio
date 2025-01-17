@@ -10,6 +10,7 @@ const SkillCard = ({ imageLink, title, skillDocs }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => window.open(skillDocs)}
+      key={title}
       className={
         "relative h-[250px] w-full border-2 border-custom-gray-100 bg-transparent p-4"
       }

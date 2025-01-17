@@ -1,35 +1,38 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import SkillCard from "../card/SkillCard.jsx";
-import List from "./List.jsx";
 
-const SkillsList = ({ listData, hiddenSide, isVisible }) => {
+const SkillsList = ({ listData, isVisible }) => {
   return (
-    <List
-      className={`flex flex-col gap-6 ${hiddenSide === "right" && "ml-auto"}`}
-      isVisible={isVisible}
-    >
-      {listData.map((data, index) => (
-        <motion.li
-          variants={{
-            visible: isVisible && { x: 0, opacity: 1 },
-            hidden: {
-              x: hiddenSide === "left" ? -125 : 125,
-              opacity: 0,
-            },
-          }}
-          transition={{ type: "just", duration: 0.5 }}
-          key={index}
-        >
-          <SkillCard
+    <AnimatePresence mode={"wait"}>
+      <motion.div
+        initial={"hidden"}
+        animate={isVisible && "visible"}
+        exit={"hidden"}
+        transition={{ staggerChildren: 0.2 }}
+        className={
+          "grid grid-cols-3 justify-between gap-6 max-lg:w-[80%] lg:w-[950px] xl:w-[1000px]"
+        }
+      >
+        {listData.map((data, index) => (
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 50, scale: 0.8 },
+              visible: { opacity: 1, y: 0, scale: 1 },
+            }}
+            transition={{ duration: 0.7, type: "just" }}
             key={index}
-            imageLink={data.iconLink}
-            title={data.skillName}
-            backwardRotate={index % 2 === 0}
-          />
-        </motion.li>
-      ))}
-    </List>
+          >
+            <SkillCard
+              key={index}
+              title={data.skillName}
+              imageLink={data.iconLink}
+              skillDocs={data.skillDocs}
+            />
+          </motion.div>
+        ))}
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
