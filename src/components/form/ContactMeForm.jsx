@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import FormInput from "../input/FormInput.jsx";
 import emailjs from "@emailjs/browser";
+import { useTranslation } from "react-i18next";
 
 const ContactMeForm = ({ isVisible }) => {
+  const { t } = useTranslation();
   const form = useRef();
 
   const {
@@ -51,35 +53,42 @@ const ContactMeForm = ({ isVisible }) => {
       onSubmit={handleSubmit(sendEmail)}
     >
       <FormInput
-        title={"Name"}
-        name={"user_name"}
+        key={"userName"}
+        title={t("contactMeName")}
         register={register("name", {
-          required: "Please enter your name.",
+          required: t("contactMeNameError"),
         })}
-        errors={errors?.name?.message}
+        errors={errors?.name?.message !== null}
+        errorLanguageKey={"contactMeNameError"}
       />
       <FormInput
+        key={"userEmail"}
         title={"E-mail"}
-        name={"user_email"}
         valueType={"email"}
         register={register("email", {
-          required: "Please enter your email address.",
+          required: t("contactMeEmailRequiredError"),
           pattern: {
             value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-            message: "Please enter a valid email address.",
+            message: t("contactMeEmailPatternError"),
           },
         })}
-        errors={errors?.email?.message}
+        errors={errors?.email?.message !== null}
+        errorLanguageKey={
+          errors?.email?.type === "required"
+            ? "contactMeEmailRequiredError"
+            : "contactMeEmailPatternError"
+        }
       />
       <FormInput
-        title={"Message"}
-        name={"message"}
+        title={t("contactMeMessage")}
+        key={"userMessage"}
         valueType={"text"}
         inputType={"text-form"}
         register={register("contactMessage", {
-          required: "Please enter a message.",
+          required: t("contactMeMessageError"),
         })}
-        errors={errors?.contactMessage?.message}
+        errors={errors?.contactMessage?.message !== null}
+        errorLanguageKey={"contactMeMessageError"}
       />
       <motion.button
         type={"submit"}
@@ -97,7 +106,7 @@ const ContactMeForm = ({ isVisible }) => {
           "mt-8 w-full rounded-xl border-4 font-bold uppercase tracking-widest text-white max-xs:h-[45px] 3xs:text-sm xs:h-[50px] xs:text-xl sm:h-[55px] md:h-[65px] md:text-2xl lg:h-[75px] lg:text-3xl"
         }
       >
-        SUBMIT
+        {t("contactMeButton")}
       </motion.button>
     </motion.form>
   );

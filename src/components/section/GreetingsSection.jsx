@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Section from "./Section.jsx";
 import AnimatedGreetingButton from "../button/AnimatedGreetingButton.jsx";
+import { useTranslation } from "react-i18next";
 
 const GreetingsSection = () => {
+  const { t } = useTranslation();
   const [isSectionVisible, setIsSectionVisible] = React.useState(false);
-  const sentence = "I'm a full stack web developer.";
+  const [sentence, setSentence] = useState(t("greetingSecondLine"));
   const sentenceLetters = sentence.split("");
+
+  useEffect(() => {
+    setIsSectionVisible(false);
+
+    const timer = setTimeout(() => {
+      setSentence(t("greetingSecondLine"));
+      setIsSectionVisible(true);
+    });
+
+    return () => clearTimeout(timer);
+  }, [t]);
 
   const lettersContainer = {
     hidden: { opacity: 0 },
@@ -29,7 +42,7 @@ const GreetingsSection = () => {
             "font-medium 3xs:text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
           }
         >
-          Hello, I'm{" "}
+          {t("greetingFirstLine")}
           <span className={"pink-violet-blue-text-gradient"}>Maks</span>.
         </h1>
         <h1

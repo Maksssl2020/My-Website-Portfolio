@@ -5,10 +5,14 @@ import Section from "../components/section/Section.jsx";
 import useTextareaResize from "../hooks/useTextareaResize.js";
 import GithubCatIcon from "../icons/GithubCatIcon.jsx";
 import GoToWebsiteIcon from "../icons/GoToWebsiteIcon.jsx";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion, useAnimate } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import AnimatedGoBackButton from "../components/button/AnimatedGoBackButton.jsx";
+import ProjectPageImagesList from "./ProjectPageImagesList.jsx";
 
 const ProjectPage = () => {
   const { projectName } = useParams();
+  const { i18n } = useTranslation();
   const textareaRef = useRef();
   const projectData = projectsInfoData.find(
     (project) => project.pageName === projectName,
@@ -24,10 +28,13 @@ const ProjectPage = () => {
   }, []);
 
   return (
-    <div className={"h-auto w-full"}>
+    <div className={"relative h-auto w-full"}>
+      <AnimatedGoBackButton />
       <Section id={projectName}>
         <div className={"mb-auto flex h-auto w-[1000px] flex-col gap-12"}>
-          <h1 className={"text-6xl text-white"}>{title}</h1>
+          <h1 className={"text-6xl text-white"}>
+            {i18n.language === "en" ? title.en : title.pl}
+          </h1>
           <div className={"flex h-auto w-full flex-col gap-8"}>
             <div className={"flex w-full flex-wrap gap-2"}>
               {tags.map((data, index) => (
@@ -35,7 +42,7 @@ const ProjectPage = () => {
                   whileHover={{ scale: 1.05 }}
                   key={index}
                   className={
-                    "pink-violet-blue-background-gradient w-fit rounded-full px-6 py-2 font-bold text-white"
+                    "pink-violet-blue-background-gradient w-fit cursor-pointer rounded-full px-6 py-2 font-bold text-white"
                   }
                 >
                   {data}
@@ -46,10 +53,10 @@ const ProjectPage = () => {
               readOnly
               spellCheck={"false"}
               className={
-                "text-custom-gray-200 gray-dark-gray-background-gradient h-auto w-full resize-none rounded-lg px-4 py-2 text-lg font-medium outline-none"
+                "gray-dark-gray-background-gradient h-auto w-full resize-none rounded-lg px-4 py-2 text-lg font-medium text-custom-gray-200 outline-none"
               }
               ref={textareaRef}
-              value={description}
+              value={i18n.language === "en" ? description.en : description.pl}
             />
             <div className={"flex h-auto w-full gap-4"}>
               <Link to={codeLink} target={"_blank"}>
@@ -66,11 +73,7 @@ const ProjectPage = () => {
             </div>
           </div>
 
-          <div className={"mt-8 flex h-auto w-full flex-col"}>
-            {images.map((image, index) => (
-              <img key={index} src={image} alt={`${title}${index}`} />
-            ))}
-          </div>
+          <ProjectPageImagesList images={images} title={title} />
         </div>
       </Section>
     </div>

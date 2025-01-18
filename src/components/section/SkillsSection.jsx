@@ -4,6 +4,7 @@ import Section from "./Section.jsx";
 import SkillCard from "../card/SkillCard.jsx";
 import { AnimatePresence, motion } from "framer-motion";
 import SkillsList from "../list/SkillsList.jsx";
+import { useTranslation } from "react-i18next";
 
 const skilssData = [
   {
@@ -74,11 +75,12 @@ const skilssData = [
 ];
 
 const SkillsSection = () => {
+  const { t } = useTranslation();
   const [isSectionVisible, setIsSectionVisible] = React.useState(false);
 
   return (
     <Section id={"skills"} setVisibility={setIsSectionVisible}>
-      <SectionBanner sectionNumber={"2"} title={"skills"} />
+      <SectionBanner sectionNumber={"2"} title={t("skillsTitle")} />
       <SkillsList listData={skilssData} isVisible={isSectionVisible} />
     </Section>
   );

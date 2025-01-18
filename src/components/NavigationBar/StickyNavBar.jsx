@@ -11,7 +11,7 @@ const StickyNavBar = ({ isVisible }) => {
       animate={isVisible ? { y: 0 } : { y: -65 }}
       transition={{ duration: 0.3, type: "just" }}
       className={
-        "fixed z-20 mt-2 flex h-[65px] w-[850px] items-center justify-center self-center rounded-full border-2 border-custom-gray-100 bg-custom-black-100 px-16"
+        "fixed z-20 mt-2 flex h-[65px] w-[850px] items-center justify-center self-center rounded-full border-2 border-custom-gray-100 bg-custom-black-100 px-2"
       }
     >
       <HomeNavigationSection location={location} />

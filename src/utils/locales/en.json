@@ -1,0 +1,20 @@
+{
+  "greetingFirstLine": "Hello, I'm ",
+  "greetingSecondLine": "I'm a full stack web developer.",
+  "greetingButton": "Find out more",
+  "aboutTitle": "About",
+  "aboutFirstDescription": "I'm an <1 class='text-custom-blue-100'>IT student</1> with a passion for learning new things, especially when it comes to technology. My favorite programming language is <1 class='text-custom-blue-100'>Java</1>, but I'm always <1 class='ml-1 text-custom-blue-100'>eager to explore and master new tools and languages</1>. In my free time, I enjoy reading books, particularly those that delve into science, as well as playing computer games, watching movies, and listening to music.",
+  "aboutSecondDescription": "I'm <1 class='text-custom-blue-100'>highly detail-oriented and strive for excellence</1> in everything I do. My goal is to become a <1 class='text-custom-blue-100'>full-stack developer</1>, combining my love for both front-end and back-end development to create seamless, efficient, and user-friendly applications.",
+  "skillsTitle": "Skills",
+  "projectsTitle": "Projects",
+  "contactMeTitle": "Contact Me",
+  "contactMeName": "Name",
+  "contactMeMessage": "Message",
+  "contactMeButton": "Submit",
+  "contactMeNameError": "Please enter your name.",
+  "contactMeEmailRequiredError": "Please enter your email address.",
+  "contactMeEmailPatternError": "Please enter a valid email address.",
+  "contactMeMessageError": "Please enter a message.",
+  "showMoreButton" : "Show More",
+  "resumeButton": "Resume"
+}

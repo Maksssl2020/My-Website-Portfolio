@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import SectionBanner from "../banner/SectionBanner.jsx";
 import Section from "./Section.jsx";
 import { motion } from "framer-motion";
+import { Trans, useTranslation } from "react-i18next";
 
 const AboutSection = () => {
+  const { t } = useTranslation();
   const [isSectionVisible, setIsSectionVisible] = useState(false);
   const [isImageContainerHovered, setIsImageContainerHovered] = useState(false);
 
   return (
     <Section id={"about"} setVisibility={setIsSectionVisible}>
-      <SectionBanner sectionNumber={"1"} title={"about"} />
+      <SectionBanner sectionNumber={"1"} title={t("aboutTitle")} />
       <div
         className={
           "flex w-[950px] items-center rounded-l-full max-xl:flex-col max-xl:gap-20 xl:justify-between"
@@ -24,26 +26,33 @@ const AboutSection = () => {
           }
         >
           <p className={"text-custom-gray-200"}>
-            I'm an <span className={"text-custom-blue-100"}>IT student</span>{" "}
-            with a passion for learning new things, especially when it comes to
-            technology. My favorite programming language is{" "}
-            <span className={"text-custom-blue-100"}>Java</span>, but I'm always
-            <span className={"ml-1 text-custom-blue-100"}>
-              eager to explore and master new tools and languages
-            </span>
-            . In my free time, I enjoy reading books, particularly those that
-            delve into science, as well as playing computer games, watching
-            movies, and listening to music.
+            <Trans i18nKey={"aboutFirstDescription"}>
+              I'm an <span className={"text-custom-blue-100"}>IT student</span>{" "}
+              with a passion for learning new things, especially when it comes
+              to technology. My favorite programming language is{" "}
+              <span className={"text-custom-blue-100"}>Java</span>, but I'm
+              always
+              <span className={"ml-1 text-custom-blue-100"}>
+                eager to explore and master new tools and languages
+              </span>
+              . In my free time, I enjoy reading books, particularly those that
+              delve into science, as well as playing computer games, watching
+              movies, and listening to music.
+            </Trans>
           </p>
           <p className={"text-custom-gray-200"}>
-            I'm{" "}
-            <span className={"text-custom-blue-100"}>
-              highly detail-oriented and strive for excellence
-            </span>{" "}
-            in everything I do. My goal is to become a{" "}
-            <span className={"text-custom-blue-100"}>full-stack developer</span>
-            , combining my love for both front-end and back-end development to
-            create seamless, efficient, and user-friendly applications.
+            <Trans i18nKey={"aboutSecondDescription"}>
+              I'm
+              <span className={"text-custom-blue-100"}>
+                highly detail-oriented and strive for excellence
+              </span>
+              in everything I do. My goal is to become a
+              <span className={"text-custom-blue-100"}>
+                full-stack developer
+              </span>
+              , combining my love for both front-end and back-end development to
+              create seamless, efficient, and user-friendly applications.
+            </Trans>
           </p>
         </motion.div>
         <motion.div

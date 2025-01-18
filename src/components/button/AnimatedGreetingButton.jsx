@@ -1,8 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import ArrowDownIcon from "../../icons/ArrowDownIcon.jsx";
+import { useTranslation } from "react-i18next";
 
 const AnimatedGreetingButton = () => {
+  const { t } = useTranslation();
   const [isHovered, setIsHovered] = React.useState(false);
 
   return (
@@ -21,7 +23,7 @@ const AnimatedGreetingButton = () => {
       }
     >
       <p className={"2xs:text-lg xs:text-xl sm:text-2xl md:text-3xl"}>
-        Find out more
+        {t("greetingButton")}
       </p>
       <motion.p
         className={"size-6 max-xs:size-4 xs:size-5 sm:size-6"}

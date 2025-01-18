@@ -1,8 +1,11 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import ProjectCard from "../card/ProjectCard.jsx";
+import { useTranslation } from "react-i18next";
 
 const ProjectsList = ({ listData, isVisible }) => {
+  const { i18n } = useTranslation();
+
   return (
     <AnimatePresence mode={"wait"}>
       <motion.div
@@ -27,9 +30,13 @@ const ProjectsList = ({ listData, isVisible }) => {
           >
             <ProjectCard
               key={index}
-              title={data.title}
+              title={i18n.language === "en" ? data.title.en : data.title.pl}
               image={data.images[0]}
-              description={data.description}
+              description={
+                i18n.language === "en"
+                  ? data.description.en
+                  : data.description.pl
+              }
               pageName={data.pageName}
               isFlipped={index % 2 === 0}
             />

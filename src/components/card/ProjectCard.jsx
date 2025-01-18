@@ -2,8 +2,10 @@ import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import useTextareaResize from "../../hooks/useTextareaResize.js";
+import { useTranslation } from "react-i18next";
 
 const ProjectCard = ({ title, image, description, pageName, isFlipped }) => {
+  const { t } = useTranslation();
   const [isImageContainerHovered, setIsImageContainerHovered] = useState(false);
   const [isTextareaHovered, setIsTextAreaHovered] = useState(false);
   const textareaRef = useRef(null);
@@ -59,21 +61,21 @@ const ProjectCard = ({ title, image, description, pageName, isFlipped }) => {
           ref={textareaRef}
           value={description}
           className={
-            "text-custom-gray-200 project-card-description-background-gradient h-auto w-full resize-none rounded-lg px-4 py-2 text-lg font-medium outline-none"
+            "project-card-description-background-gradient h-auto w-full resize-none rounded-lg px-4 py-2 text-lg font-medium text-custom-gray-200 outline-none"
           }
         />
         <div className={"relative flex h-auto w-auto"}>
           <div
-            className={`absolute bottom-0 -z-10 h-[45px] w-[135px] rounded-sm bg-custom-blue-100 ${!isFlipped && "right-0"}`}
+            className={`absolute bottom-0 -z-10 h-[45px] w-[150px] rounded-sm bg-custom-blue-100 ${!isFlipped && "right-0"}`}
           />
           <motion.button
             whileHover={
               isFlipped ? { x: "2%", y: "-4%" } : { x: "-2%", y: "-4%" }
             }
-            className={`mt-6 h-[45px] w-[135px] rounded-sm border-2 border-custom-blue-100 bg-custom-black-100 px-6 py-2 font-medium text-custom-blue-100 ${isFlipped ? "mr-auto" : "ml-auto"}`}
+            className={`mt-6 h-[45px] w-[150px] rounded-sm border-2 border-custom-blue-100 bg-custom-black-100 px-6 py-2 font-medium text-custom-blue-100 ${isFlipped ? "mr-auto" : "ml-auto"}`}
             onClick={() => navigate(pageName)}
           >
-            Show More
+            {t("showMoreButton")}
           </motion.button>
         </div>
       </div>

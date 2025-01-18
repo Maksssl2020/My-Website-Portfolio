@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { AnimatePresence, color, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import HeaderAccordion from "../accordion/HeaderAccordion.jsx";
-
-const headerData = ["Home", "About", "Skills", "Projects", "Contact"];
+import { useTranslation } from "react-i18next";
 
 const HomeNavigationSection = ({ location }) => {
+  const { i18n } = useTranslation();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [activeSection, setActiveSection] = useState();
+
+  const isEnLanguageChosen = i18n.language === "en";
+  const headerData = [
+    { id: "Home", name: isEnLanguageChosen ? "Home" : "Start" },
+    { id: "About", name: isEnLanguageChosen ? "About" : "O mnie" },
+    { id: "Skills", name: isEnLanguageChosen ? "Skills" : "Umiejętności" },
+    { id: "Projects", name: isEnLanguageChosen ? "Projects" : "Projekty" },
+    { id: "Contact", name: isEnLanguageChosen ? "Contact" : "Kontakt" },
+  ];
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -19,7 +28,7 @@ const HomeNavigationSection = ({ location }) => {
 
   useEffect(() => {
     const sections = headerData.map((section) => {
-      return document.getElementById(section.toLowerCase());
+      return document.getElementById(section.id.toLowerCase());
     });
 
     const observer = new IntersectionObserver(
@@ -30,7 +39,7 @@ const HomeNavigationSection = ({ location }) => {
           }
         });
       },
-      { threshold: 0.3 },
+      { threshold: 0.4 },
     );
 
     sections.forEach((section) => {
@@ -80,7 +89,7 @@ const HomeNavigationSection = ({ location }) => {
             >
               <motion.div
                 animate={
-                  activeSection === data.toLowerCase()
+                  activeSection === data.id.toLowerCase()
                     ? { opacity: 1 }
                     : { opacity: 0 }
                 }
@@ -92,18 +101,18 @@ const HomeNavigationSection = ({ location }) => {
               <motion.a
                 key={index}
                 whileHover={
-                  activeSection !== data.toLowerCase()
+                  activeSection !== data.id.toLowerCase()
                     ? {
                         cursor: "pointer",
                         background: "#303030",
                       }
                     : {}
                 }
-                href={`#${data.toLowerCase()}`}
+                href={`#${data.id.toLowerCase()}`}
                 style={{ color: "#FFFFFF" }}
                 className={"z-10 rounded-full px-6 py-2"}
               >
-                {data}
+                {data.name}
               </motion.a>
             </div>
           ))}
