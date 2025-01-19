@@ -10,7 +10,6 @@ import { useTranslation } from "react-i18next";
 import AnimatedGoBackButton from "../components/button/AnimatedGoBackButton.jsx";
 import ProjectPageImagesList from "../components/list/ProjectPageImagesList.jsx";
 import ProjectPageVideosList from "../components/list/ProjectPageVideosList.jsx";
-import useWindowWidth from "../hooks/useWindowWidth.js";
 
 const ProjectPage = () => {
   const { projectName } = useParams();

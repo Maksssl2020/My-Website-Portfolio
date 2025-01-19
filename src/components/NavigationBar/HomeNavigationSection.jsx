@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import useWindowWidth from "../../hooks/useWindowWidth.js";
 
 const HomeNavigationSection = ({ location }) => {
   const { i18n } = useTranslation();
-
-  const [activeSection, setActiveSection] = useState();
   const [activeIndex, setActiveIndex] = useState(0);
+  const currentWindowWidth = useWindowWidth();
   const carouselRef = useRef();
 
   const isEnLanguageChosen = i18n.language === "en";
@@ -27,7 +27,6 @@ const HomeNavigationSection = ({ location }) => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
             const index = headerData.findIndex(
               (section) => section.id.toLowerCase() === entry.target.id,
             );
@@ -35,7 +34,7 @@ const HomeNavigationSection = ({ location }) => {
           }
         });
       },
-      { threshold: 0.4 },
+      { threshold: currentWindowWidth >= 700 ? 0.4 : 0.25 },
     );
 
     sections.forEach((section) => {
@@ -47,7 +46,7 @@ const HomeNavigationSection = ({ location }) => {
         observer.unobserve(section);
       });
     };
-  }, [activeSection, location]);
+  }, [activeIndex, currentWindowWidth, headerData, location]);
 
   useEffect(() => {
     if (carouselRef.current) {
@@ -88,11 +87,7 @@ const HomeNavigationSection = ({ location }) => {
             key={index}
           >
             <motion.li
-              animate={
-                activeSection === data.id.toLowerCase()
-                  ? { opacity: 1 }
-                  : { opacity: 0 }
-              }
+              animate={activeIndex === index ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.3 }}
               className={
                 "pink-violet-blue-background-gradient absolute h-full w-full rounded-full"
@@ -101,9 +96,8 @@ const HomeNavigationSection = ({ location }) => {
             <motion.a
               key={index}
               whileHover={
-                activeSection !== data.id.toLowerCase()
+                activeIndex !== index
                   ? {
-                      cursor: "pointer",
                       background: "#303030",
                     }
                   : {}

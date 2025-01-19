@@ -12,7 +12,7 @@ const Header = ({ isVisible }) => {
 
   return (
     <motion.header
-      animate={isVisible ? { y: 0 } : { y: -100 }}
+      animate={isVisible ? { y: -1 } : { y: -100 }}
       transition={{ duration: 0.3, type: "just" }}
       className={`gray-dark-gray-background-gradient sticky left-0 top-0 z-50 h-[65px] w-full px-8 py-4`}
     >
@@ -52,7 +52,7 @@ const Header = ({ isVisible }) => {
         </motion.h2>
 
         <div className={"ml-auto md:hidden"}>
-          <HeaderAccordion />
+          <HeaderAccordion isHeaderVisible={isVisible} />
         </div>
 
         <div
@@ -62,35 +62,41 @@ const Header = ({ isVisible }) => {
         >
           <div className={"relative ml-6 flex h-auto w-auto text-lg"}>
             <div
-              className={`absolute -z-10 h-[40px] w-[125px] rounded-lg bg-custom-blue-100`}
+              className={`absolute -z-10 rounded-lg bg-custom-blue-100 max-lg:h-[35px] max-lg:w-[100px] lg:h-[40px] lg:w-[125px]`}
             />
             <a href={"assets/resume-english.pdf"} target={"_blank"}>
               <motion.button
                 whileHover={{ x: "-3%", y: "-6%" }}
-                className={`h-[40px] w-[125px] rounded-lg border border-custom-blue-100 bg-custom-gray-100 px-6 font-normal text-custom-blue-100`}
+                className={`flex items-center justify-center rounded-lg border border-custom-blue-100 bg-custom-gray-100 font-normal text-custom-blue-100 max-lg:h-[35px] max-lg:w-[100px] max-lg:text-sm lg:h-[40px] lg:w-[125px] lg:px-6`}
               >
                 {t("resumeButton")}
               </motion.button>
             </a>
           </div>
 
-          <span className={"h-10 w-0.5 rounded-full bg-white"} />
+          <span className={"h-10 w-2 rounded-full bg-custom-gray-100"} />
 
-          <LanguageChangeButtons />
+          <LanguageChangeButtons
+            className={"max-lg:size-8 max-lg:pt-0.5 max-lg:text-sm lg:size-10"}
+          />
 
-          <span className={"h-10 w-0.5 rounded-full bg-white"} />
+          <span className={"h-10 w-2 rounded-full bg-custom-gray-100"} />
 
           <Link
             to={"https://www.linkedin.com/in/maksymilianleszczynski/"}
             target={"_blank"}
           >
             <LinkedinIcon
-              className={"size-10 rounded-lg border-2 fill-white"}
+              className={
+                "rounded-lg border-2 fill-white max-lg:size-8 lg:size-10"
+              }
             />
           </Link>
           <Link to={"https://github.com/Maksssl2020"} target={"_blank"}>
             <GithubCatIcon
-              className={"size-10 rounded-lg border-2 fill-white"}
+              className={
+                "rounded-lg border-2 fill-white max-lg:size-8 lg:size-10"
+              }
             />
           </Link>
         </div>

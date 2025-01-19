@@ -14,7 +14,7 @@ const AboutSection = () => {
       <SectionBanner sectionNumber={"1"} title={t("aboutTitle")} />
       <div
         className={
-          "flex items-center rounded-l-full max-xl:flex-col max-xl:gap-20 max-lg:w-[95%] lg:w-[950px] xl:justify-between"
+          "flex items-center rounded-l-full max-xl:flex-col max-xl:gap-12 max-lg:w-[95%] lg:w-[950px] xl:justify-between"
         }
       >
         <motion.div
@@ -62,7 +62,7 @@ const AboutSection = () => {
           animate={isSectionVisible && { x: "0%", opacity: 1 }}
           transition={{ duration: 1.0 }}
           className={
-            "relative max-sm:size-[325px] max-2xs:size-[250px] sm:size-[400px] md:size-[300px] lg:size-[350px]"
+            "relative max-xl:mb-6 max-sm:size-[325px] max-2xs:size-[250px] sm:size-[400px] md:size-[300px] lg:size-[350px]"
           }
         >
           <motion.div

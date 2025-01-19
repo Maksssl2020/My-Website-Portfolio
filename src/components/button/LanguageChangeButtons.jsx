@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-const LanguageChangeButtons = () => {
+const LanguageChangeButtons = ({ className }) => {
   const { i18n } = useTranslation();
   const [chosenLanguage, setChosenLanguage] = useState(i18n.language);
 
@@ -25,7 +25,7 @@ const LanguageChangeButtons = () => {
             : { color: "#FFFFFF", borderColor: "#FFFFFF" }
         }
         onClick={() => handleChangeLanguage("en")}
-        className={"size-10 rounded-lg border-2"}
+        className={`rounded-lg border-2 ${className}`}
       >
         EN
       </motion.button>
@@ -41,7 +41,7 @@ const LanguageChangeButtons = () => {
             : { color: "#FFFFFF", borderColor: "#FFFFFF" }
         }
         onClick={() => handleChangeLanguage("pl")}
-        className={"size-10 rounded-lg border-2"}
+        className={`rounded-lg border-2 ${className}`}
       >
         PL
       </motion.button>

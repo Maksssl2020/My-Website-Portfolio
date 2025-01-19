@@ -45,18 +45,16 @@ const ProjectPageVideosList = ({ videos, startIndex }) => {
               duration: 1.0,
             }}
             key={index}
-            className={`project-page-image-video-background-gradient flex h-auto justify-center rounded-lg max-lg:w-full max-sm:p-1 sm:p-2 md:p-3 lg:w-[90%] lg:p-4 ${(startIndex + index) % 2 === 0 ? "ml-auto" : "mr-auto"}`}
+            className={`project-page-image-video-background-gradient relative flex h-auto justify-center rounded-lg max-lg:w-full max-sm:p-1 sm:p-2 md:p-3 lg:w-[90%] lg:p-4 ${(startIndex + index) % 2 === 0 ? "ml-auto" : "mr-auto"}`}
           >
-            <video
-              key={index}
-              controls
-              autoPlay={true}
-              muted={true}
-              loop={true}
-              className={`w-full rounded-lg`}
-            >
-              <source src={video} type={"video/mp4"} />
-            </video>
+            <iframe
+              className={
+                "flex w-full rounded-lg max-sm:h-[325px] sm:h-[400px] md:h-[475px] lg:h-[525px]"
+              }
+              allowFullScreen
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              src={video}
+            />
           </motion.li>
         ))}
       </motion.ul>

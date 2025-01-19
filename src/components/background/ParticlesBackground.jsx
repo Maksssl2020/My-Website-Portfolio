@@ -17,38 +17,40 @@ const ParticlesBackground = () => {
     return;
   }
 
+  const particlesOptions = {
+    background: {
+      color: "#000000",
+    },
+    fpsLimit: 60,
+    fullScreen: true,
+    particles: {
+      color: {
+        value: ["#FF3CAC", "#784BA0", "#0066FF"],
+      },
+      shape: {
+        type: "circle",
+      },
+      number: {
+        value: 50,
+      },
+      size: {
+        value: 2,
+      },
+      move: {
+        enable: true,
+        speed: 0.3,
+        random: true,
+      },
+      opacity: {
+        value: 0.5,
+      },
+    },
+  };
+
   return (
-    <Particles
-      className={"fixed -z-10"}
-      options={{
-        background: {
-          color: "#000000",
-        },
-        fpsLimit: 120,
-        particles: {
-          color: {
-            value: ["#FF3CAC", "#784BA0", "#0066FF"],
-          },
-          shape: {
-            type: "circle",
-          },
-          number: {
-            value: 50,
-          },
-          size: {
-            value: 2,
-          },
-          move: {
-            direction: "none",
-            enable: true,
-            speed: 0.5,
-          },
-          opacity: {
-            value: 0.5,
-          },
-        },
-      }}
-    />
+    <div className={"fixed inset-0 -z-10"}>
+      <Particles className={"h-screen w-screen"} options={particlesOptions} />
+    </div>
   );
 };
 

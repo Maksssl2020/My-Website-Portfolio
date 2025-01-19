@@ -7,17 +7,27 @@ import LinkedinIcon from "../../icons/LinkedinIcon.jsx";
 import GithubCatIcon from "../../icons/GithubCatIcon.jsx";
 import { useTranslation } from "react-i18next";
 import LanguageChangeButtons from "../button/LanguageChangeButtons.jsx";
+import useWindowWidth from "../../hooks/useWindowWidth.js";
 
-const HeaderAccordion = () => {
+const HeaderAccordion = ({ isHeaderVisible }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const { t } = useTranslation();
+  const currentWindowWidth = useWindowWidth();
+
+  const handleButtonHover = (hoverState) => {
+    if (currentWindowWidth > 440) {
+      setIsHovered(hoverState);
+    } else {
+      setIsHovered(false);
+    }
+  };
 
   return (
     <div className={"relative flex flex-col overflow-hidden"}>
       <motion.button
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={() => handleButtonHover(true)}
+        onMouseLeave={() => handleButtonHover(false)}
         whileHover={{ borderColor: "#0066FF" }}
         onClick={() => setIsOpen(!isOpen)}
         className={
@@ -55,7 +65,7 @@ const HeaderAccordion = () => {
       <motion.div
         initial={{ opacity: 0, height: 0, y: -55, x: -100 }}
         animate={
-          isOpen
+          isOpen && isHeaderVisible
             ? { opacity: 1, height: "200px", y: 55, x: -100 }
             : { opacity: 0, height: 0 }
         }

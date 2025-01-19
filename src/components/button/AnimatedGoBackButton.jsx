@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import ArrowLeftIcon from "../../icons/ArrowLeftIcon.jsx";
 import { AnimatePresence, motion, useAnimate } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -9,16 +9,19 @@ const AnimatedGoBackButton = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [showText, setShowText] = useState(false);
   const currentWindowWidth = useWindowWidth();
-
+  const textTimerRef = useRef(null);
   const isMediumWidthAndGreater = currentWindowWidth >= 768;
   const isGreaterThanSmall = currentWindowWidth >= 640;
 
   const handleHover = (hoverState) => {
-    setIsHovered(hoverState);
     if (hoverState) {
-      setTimeout(() => setShowText(true), 300);
+      clearTimeout(textTimerRef.current);
+      setIsHovered(true);
+      textTimerRef.current = setTimeout(() => setShowText(true), 200);
     } else {
+      clearTimeout(textTimerRef.current);
       setShowText(false);
+      setIsHovered(false);
     }
   };
 
