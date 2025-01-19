@@ -7,7 +7,7 @@ import ContactMeSection from "../components/section/ContactMeSection.jsx";
 
 const Home = () => {
   return (
-    <div className={"w-full h-auto"}>
+    <div className={"h-auto w-full overflow-x-hidden"}>
       <GreetingsSection />
       <AboutSection />
       <SkillsSection />

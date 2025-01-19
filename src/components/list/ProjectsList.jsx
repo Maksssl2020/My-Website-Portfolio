@@ -1,42 +1,50 @@
 import React from "react";
-import List from "./List.jsx";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import ProjectCard from "../card/ProjectCard.jsx";
+import { useTranslation } from "react-i18next";
 
 const ProjectsList = ({ listData, isVisible }) => {
+  const { i18n } = useTranslation();
+
   return (
-    <List
-      className={`w-full flex flex-col gap-6 overflow-x-hidden`}
-      isVisible={isVisible}
-    >
-      {listData.map((data, index) => (
-        <motion.li
-          variants={{
-            visible: isVisible && { x: 0, opacity: 1 },
-            hidden: {
-              x: index % 2 !== 0 ? -125 : 125,
-              opacity: 0,
-            },
-          }}
-          transition={{ type: "just", duration: 0.5 }}
-          className={"flex justify-center items-center"}
-          key={index}
-        >
-          <ProjectCard
+    <AnimatePresence mode={"wait"}>
+      <motion.div
+        initial={"hidden"}
+        animate={isVisible && "visible"}
+        exit={"hidden"}
+        transition={{ staggerChildren: 0.2 }}
+        className={`flex h-auto flex-col max-md:w-[95%] max-md:gap-6 md:w-[745px] md:gap-8 lg:w-[1000px] lg:gap-6`}
+      >
+        {listData.map((data, index) => (
+          <motion.div
+            variants={{
+              visible: isVisible && { x: 0, opacity: 1 },
+              hidden: {
+                x: index % 2 !== 0 ? -125 : 125,
+                opacity: 0,
+              },
+            }}
+            transition={{ duration: 0.8, type: "just" }}
+            className={`flex h-full items-center justify-center`}
             key={index}
-            title={data.title}
-            image={data.image}
-            description={data.description}
-            codeLink={data.codeLink}
-            websiteLink={data.websiteLink}
-            isFlipped={index % 2 !== 0}
-          />
-        </motion.li>
-      ))}
-    </List>
+          >
+            <ProjectCard
+              key={index}
+              title={i18n.language === "en" ? data.title.en : data.title.pl}
+              image={data.images[0]}
+              description={
+                i18n.language === "en"
+                  ? data.description.en
+                  : data.description.pl
+              }
+              pageName={data.pageName}
+              isFlipped={index % 2 === 0}
+            />
+          </motion.div>
+        ))}
+      </motion.div>
+    </AnimatePresence>
   );
 };
-
-ProjectsList.propTypes = {};
 
 export default ProjectsList;

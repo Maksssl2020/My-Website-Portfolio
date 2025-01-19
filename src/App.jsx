@@ -2,6 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import AppLayout from "./layout/AppLayout.jsx";
 import Home from "./pages/Home.jsx";
+import ProjectPage from "./pages/ProjectPage.jsx";
+import PageAnimation from "./Animations/PageAnimation.jsx";
 
 function App() {
   const router = createBrowserRouter([
@@ -10,14 +12,26 @@ function App() {
       children: [
         {
           path: "/My-Website-Portfolio",
-          element: <Home />,
+          element: (
+            <PageAnimation>
+              <Home />
+            </PageAnimation>
+          ),
+        },
+        {
+          path: "/My-Website-Portfolio/:projectName",
+          element: (
+            <PageAnimation>
+              <ProjectPage />
+            </PageAnimation>
+          ),
         },
       ],
     },
   ]);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode={"wait"}>
       <RouterProvider router={router} />
     </AnimatePresence>
   );

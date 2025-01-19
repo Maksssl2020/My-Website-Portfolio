@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import SectionBanner from "../banner/SectionBanner.jsx";
 import Section from "./Section.jsx";
 import { motion } from "framer-motion";
+import { Trans, useTranslation } from "react-i18next";
 
 const AboutSection = () => {
-  const [isSectionVisible, setIsSectionVisible] = React.useState(false);
+  const { t } = useTranslation();
+  const [isSectionVisible, setIsSectionVisible] = useState(false);
+  const [isImageContainerHovered, setIsImageContainerHovered] = useState(false);
 
   return (
     <Section id={"about"} setVisibility={setIsSectionVisible}>
-      <SectionBanner title={"about"} />
+      <SectionBanner sectionNumber={"1"} title={t("aboutTitle")} />
       <div
         className={
-          "flex max-xl:flex-col max-xl:gap-20 xl:justify-between rounded-l-full items-center lg:w-[1000px] xl:w-[1250px]"
+          "flex items-center rounded-l-full max-xl:flex-col max-xl:gap-20 max-lg:w-[95%] lg:w-[950px] xl:justify-between"
         }
       >
         <motion.div
@@ -19,33 +22,83 @@ const AboutSection = () => {
           animate={isSectionVisible && { x: "0%", opacity: 1 }}
           transition={{ duration: 1.0 }}
           className={
-            "max-2xs:size-[250px] max-sm:size-[325px] sm:size-[400px] md:size-[450px] lg:size-[500px] rounded-full border-4 border-custom-violet-100"
+            "relative flex flex-col gap-4 font-normal tracking-normal max-xl:w-[80%] max-2xs:text-sm 2xs:text-[16px] xs:text-lg sm:text-xl lg:text-2xl xl:w-[500px]"
           }
         >
-          <img
-            className={"w-full h-full rounded-full inset-0 object-cover"}
-            src="assets/My-Face.JPG"
-            alt={"My-Face_picture"}
-          />
+          <p className={"text-custom-gray-200"}>
+            <Trans i18nKey={"aboutFirstDescription"}>
+              I'm an <span className={"text-custom-blue-100"}>IT student</span>{" "}
+              with a passion for learning new things, especially when it comes
+              to technology. My favorite programming language is{" "}
+              <span className={"text-custom-blue-100"}>Java</span>, but I'm
+              always
+              <span className={"ml-1 text-custom-blue-100"}>
+                eager to explore and master new tools and languages
+              </span>
+              . In my free time, I enjoy reading books, particularly those that
+              delve into science, as well as playing computer games, watching
+              movies, and listening to music.
+            </Trans>
+          </p>
+          <p className={"text-custom-gray-200"}>
+            <Trans i18nKey={"aboutSecondDescription"}>
+              I'm
+              <span className={"text-custom-blue-100"}>
+                highly detail-oriented and strive for excellence
+              </span>
+              in everything I do. My goal is to become a
+              <span className={"text-custom-blue-100"}>
+                full-stack developer
+              </span>
+              , combining my love for both front-end and back-end development to
+              create seamless, efficient, and user-friendly applications.
+            </Trans>
+          </p>
         </motion.div>
         <motion.div
+          onMouseEnter={() => setIsImageContainerHovered(true)}
+          onMouseLeave={() => setIsImageContainerHovered(false)}
           initial={{ x: "55%", opacity: 0 }}
           animate={isSectionVisible && { x: "0%", opacity: 1 }}
           transition={{ duration: 1.0 }}
           className={
-            "font-medium max-xl:w-[80%] xl:w-[500px] max-2xs:text-sm 2xs:text-[16px] xs:text-lg sm:text-xl lg:text-2xl relative tracking-normal text-white flex flex-col gap-4"
+            "relative max-sm:size-[325px] max-2xs:size-[250px] sm:size-[400px] md:size-[300px] lg:size-[350px]"
           }
         >
-          <p className={"violet-text-gradient"}>
-            {
-              "I'm an IT student with a passion for learning new things, especially when it comes to technology. My favorite programming language is Java, but I'm always eager to explore and master new tools and languages. In my free time, I enjoy reading books, particularly those that delve into science, as well as playing computer games, watching movies, and listening to music."
+          <motion.div
+            animate={
+              isImageContainerHovered
+                ? { x: "7%", y: "7%" }
+                : { x: "5%", y: "5%" }
             }
-          </p>
-          <p className={"violet-text-gradient"}>
-            {
-              "I'm highly detail-oriented and strive for excellence in everything I do. My goal is to become a full-stack developer, combining my love for both front-end and back-end development to create seamless, efficient, and user-friendly applications."
+            transition={{ duration: 0.2 }}
+            className={
+              "absolute -z-10 size-full rounded-lg border-4 border-custom-blue-100 bg-black"
             }
-          </p>
+          ></motion.div>
+          <motion.div
+            animate={
+              isImageContainerHovered
+                ? { x: "-2%", y: "-2%" }
+                : { x: "0%", y: "0%" }
+            }
+            transition={{ duration: 0.2 }}
+            className={
+              "relative size-full rounded-lg border-4 border-custom-blue-100"
+            }
+          >
+            <motion.div
+              animate={
+                isImageContainerHovered ? { opacity: 0 } : { opacity: 0.4 }
+              }
+              className={"absolute size-full bg-custom-blue-100"}
+            ></motion.div>
+            <img
+              className={"inset-0 h-full w-full rounded-md object-cover"}
+              src="assets/My-Face.JPG"
+              alt={"My-Face_picture"}
+            />
+          </motion.div>
         </motion.div>
       </div>
     </Section>

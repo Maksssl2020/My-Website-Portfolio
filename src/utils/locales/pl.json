@@ -1,0 +1,20 @@
+{
+  "greetingFirstLine": "Cześć, jestem ",
+  "greetingSecondLine": "Jestem full-stack web deweloperem.",
+  "greetingButton": "Dowiedz się więcej",
+  "aboutTitle": "O mnie",
+  "aboutFirstDescription": "Jestem <1 class='text-custom-blue-100'>studentem informatyki</1> z pasją do odkrywania nowych rzeczy, zwłaszcza w dziedzinie technologii. Moim ulubionym językiem programowania jest <1 class='text-custom-blue-100'>Java</1>, ale zawsze jestem chętny do <1 class='ml-1 text-custom-blue-100'>uczenia się nowych języków i narzędzi oraz doskonalenia swoich umiejętności</1>. W moim wolnym czasie czytam ksiązki, szczególnie popularnonaukowe, a także gram w gry komputerowe, oglądam filmy i seriale oraz słucham muzyki.",
+  "aboutSecondDescription" : "Jestem osobą <1 class='text-custom-blue-100'>skrupulatną, dążącą do doskonałości</1> we wszystkim, co robię. Moim celem jest zostanie <1 class='text-custom-blue-100'>doświadzonym programistą full-stack</1>, co pozwoli połączyć mi zamiłowanie zarówno do front-endu, jak i back-endu, aby tworzyć spójne, wydajne i przyjazne aplikacje dla użytkownika.",
+  "skillsTitle": "Umiejętności",
+  "projectsTitle": "Projekty",
+  "contactMeTitle": "Skontaktuj Się",
+  "contactMeName": "Imię / Nazwa Firmy",
+  "contactMeMessage": "Wiadomość",
+  "contactMeButton": "Wyślij",
+  "contactMeNameError": "Proszę wpisać imię / nazwę firmy.",
+  "contactMeEmailRequiredError": "Proszę wpisać adres e-mail.",
+  "contactMeEmailPatternError": "Proszę wpisać prawidłowy adres e-mail.",
+  "contactMeMessageError": "Proszę wpisać wiadomość.",
+  "showMoreButton" : "Pokaż Więcej",
+  "resumeButton": "CV"
+}

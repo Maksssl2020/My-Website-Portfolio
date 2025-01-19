@@ -7,8 +7,13 @@ export default {
     },
     extend: {
       colors: {
-        "custom-violet-100": "#4386F4",
+        "custom-blue-100": "#0066FF",
+        "custom-blue-200": "#002584",
+        "custom-blue-300": "#001038",
         "custom-gray-100": "#282828",
+        "custom-gray-200": "#CCCCCC",
+        "custom-gray-300": "#303030",
+        "custom-black-100": "#000000",
       },
       screens: {
         xs: "540px",

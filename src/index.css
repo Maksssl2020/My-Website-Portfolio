@@ -6,12 +6,49 @@ html {
     scroll-behavior: smooth;
 }
 
-.violet-background-gradient {
-    background: linear-gradient(65deg, #4386F4, #6A5ACD, #8A2BE2, #3216BC)
+.gray-dark-gray-background-gradient {
+    background-image: linear-gradient(90deg, #1a1a1a, #121212);
 }
 
-.violet-text-gradient {
-    background: linear-gradient(90deg, #4386F4, #6A5ACD, #8A2BE2, #3216BC);
+.pink-violet-blue-background-gradient {
+    background-color: #FF3CAC;
+    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #0066FF 100%);
+}
+
+.pink-violet-blue-text-gradient {
+    background: linear-gradient(125deg, #FF3CAC 0%, #784BA0 50%, #0066FF 100%);
     color: transparent;
     background-clip: text;
 }
+
+.project-card-description-background-gradient {
+    @media(min-width: 768px) {
+        background-image: linear-gradient(
+                70deg,
+                #002584 25%,
+                #0029cc 50%,
+                #5c1e91 75%,
+                #420a66 100%
+        );
+    }
+
+}
+
+.project-page-image-video-background-gradient {
+    background-image: linear-gradient(
+            70deg,
+            #002584 25%,
+            #0029cc 50%,
+            #5c1e91 75%,
+            #420a66 100%
+    );
+}
+
+.gradient-text-for-animation {
+    background: linear-gradient(90deg, #FF3CAC , #784BA0 , #0066FF );
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+

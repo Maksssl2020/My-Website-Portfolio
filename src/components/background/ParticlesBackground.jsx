@@ -22,12 +22,12 @@ const ParticlesBackground = () => {
       className={"fixed -z-10"}
       options={{
         background: {
-          color: "#1A1A1A",
+          color: "#000000",
         },
         fpsLimit: 120,
         particles: {
           color: {
-            value: ["#4386F4", "#6A5ACD", "#8A2BE2", "#3216BC"],
+            value: ["#FF3CAC", "#784BA0", "#0066FF"],
           },
           shape: {
             type: "circle",

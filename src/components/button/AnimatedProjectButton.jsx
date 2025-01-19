@@ -17,7 +17,7 @@ const AnimatedProjectButton = ({ title, link }) => {
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleButtonClick}
       className={
-        "mr-auto relative overflow-hidden max-3xs:text-[6px] 3xs:text-[6px] xs:text-[10px] sm:text-sm md:text-lg lg:text-2xl max-sm:px-1 max-sm:py-2 sm:py-4 sm:px-2"
+        "relative mr-auto overflow-hidden max-sm:px-1 max-sm:py-2 max-3xs:text-[6px] 3xs:text-[6px] xs:text-[10px] sm:px-2 sm:py-4 sm:text-sm md:text-lg lg:text-2xl"
       }
     >
       <p className={"z-20"}>{title}</p>
@@ -28,7 +28,7 @@ const AnimatedProjectButton = ({ title, link }) => {
             ? { height: "100%", bottom: 0, borderRadius: "12px", zIndex: -1 }
             : { height: "4%", bottom: 0, left: 0 }
         }
-        className={"absolute bottom-0 self-center w-full bg-custom-violet-100 "}
+        className={"absolute bottom-0 w-full self-center bg-custom-blue-100"}
       />
     </motion.button>
   );

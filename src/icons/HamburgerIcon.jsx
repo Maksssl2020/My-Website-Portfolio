@@ -1,9 +1,11 @@
 import React from "react";
+import { motion } from "framer-motion";
 
-const HamburgerIcon = ({ className }) => {
+const HamburgerIcon = ({ className, isHovered }) => {
   return (
-    <svg
+    <motion.svg
       className={className}
+      animate={isHovered ? { stroke: "#0066FF" } : { stroke: "#FFFFFF" }}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -14,7 +16,7 @@ const HamburgerIcon = ({ className }) => {
         strokeLinejoin="round"
         d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
       />
-    </svg>
+    </motion.svg>
   );
 };
 
