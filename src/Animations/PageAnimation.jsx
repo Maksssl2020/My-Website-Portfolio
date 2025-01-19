@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
+import ParticlesBackground from "../components/background/ParticlesBackground.jsx";
 
 const PageAnimation = ({ children }) => {
   const location = useLocation();
@@ -13,6 +14,7 @@ const PageAnimation = ({ children }) => {
       exit={{ opacity: 0 }}
       transition={{ type: "tween", duration: 1.5 }}
     >
+      <ParticlesBackground />
       {children}
     </motion.div>
   );

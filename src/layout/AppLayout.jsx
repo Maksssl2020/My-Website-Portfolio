@@ -31,7 +31,6 @@ const AppLayout = () => {
   return (
     <div>
       <Header isVisible={isVisible} />
-      <ParticlesBackground />
       <div className={"relative flex flex-col"}>
         {location.pathname === "/My-Website-Portfolio/" && (
           <StickyNavBar isVisible={isVisible} />
