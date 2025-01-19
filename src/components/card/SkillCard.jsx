@@ -12,7 +12,7 @@ const SkillCard = ({ imageLink, title, skillDocs }) => {
       onClick={() => window.open(skillDocs)}
       key={title}
       className={
-        "relative h-[250px] w-full border-2 border-custom-gray-100 bg-transparent p-4"
+        "relative w-full border-2 border-custom-gray-100 bg-transparent p-4 max-xs:h-[200px] xs:h-[250px]"
       }
     >
       <PlusIcon className={"absolute -left-3 -top-3 size-6 text-white"} />
@@ -46,8 +46,14 @@ const SkillCard = ({ imageLink, title, skillDocs }) => {
               "flex flex-col items-center justify-center gap-2 font-bold text-white"
             }
           >
-            <h1 className={"text-3xl"}>{title}</h1>
-            <img className={"size-14"} src={imageLink} alt={title} />
+            <h1 className={"max-xs:text-xl xs:text-2xl sm:text-3xl"}>
+              {title}
+            </h1>
+            <img
+              className={"max-sm:size-12 sm:size-14"}
+              src={imageLink}
+              alt={title}
+            />
           </div>
         </div>
       </motion.div>

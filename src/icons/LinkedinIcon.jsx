@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-const LinkedinIcon = ({ className, isHovered }) => {
+const LinkedinIcon = ({ className }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <motion.svg
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       animate={
         isHovered
           ? { fill: "#0066FF", borderColor: "#0066FF", scale: 1.05 }

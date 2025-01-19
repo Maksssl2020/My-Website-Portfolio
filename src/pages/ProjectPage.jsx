@@ -5,10 +5,12 @@ import Section from "../components/section/Section.jsx";
 import useTextareaResize from "../hooks/useTextareaResize.js";
 import GithubCatIcon from "../icons/GithubCatIcon.jsx";
 import GoToWebsiteIcon from "../icons/GoToWebsiteIcon.jsx";
-import { AnimatePresence, motion, useAnimate } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import AnimatedGoBackButton from "../components/button/AnimatedGoBackButton.jsx";
-import ProjectPageImagesList from "./ProjectPageImagesList.jsx";
+import ProjectPageImagesList from "../components/list/ProjectPageImagesList.jsx";
+import ProjectPageVideosList from "../components/list/ProjectPageVideosList.jsx";
+import useWindowWidth from "../hooks/useWindowWidth.js";
 
 const ProjectPage = () => {
   const { projectName } = useParams();
@@ -18,7 +20,7 @@ const ProjectPage = () => {
     (project) => project.pageName === projectName,
   );
 
-  const { title, images, description, codeLink, websiteLink, tags } =
+  const { title, images, videos, description, codeLink, websiteLink, tags } =
     projectData;
 
   useTextareaResize(textareaRef, description);
@@ -31,8 +33,16 @@ const ProjectPage = () => {
     <div className={"relative h-auto w-full"}>
       <AnimatedGoBackButton />
       <Section id={projectName}>
-        <div className={"mb-auto flex h-auto w-[1000px] flex-col gap-12"}>
-          <h1 className={"text-6xl text-white"}>
+        <div
+          className={
+            "mb-auto flex h-auto flex-col gap-12 max-lg:w-[95%] lg:w-[1000px]"
+          }
+        >
+          <h1
+            className={
+              "text-white max-sm:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
+            }
+          >
             {i18n.language === "en" ? title.en : title.pl}
           </h1>
           <div className={"flex h-auto w-full flex-col gap-8"}>
@@ -42,7 +52,7 @@ const ProjectPage = () => {
                   whileHover={{ scale: 1.05 }}
                   key={index}
                   className={
-                    "pink-violet-blue-background-gradient w-fit cursor-pointer rounded-full px-6 py-2 font-bold text-white"
+                    "pink-violet-blue-background-gradient w-fit cursor-pointer rounded-full py-2 font-bold text-white max-md:px-2 max-md:text-sm max-sm:py-1 md:px-4 lg:px-6"
                   }
                 >
                   {data}
@@ -53,7 +63,7 @@ const ProjectPage = () => {
               readOnly
               spellCheck={"false"}
               className={
-                "gray-dark-gray-background-gradient h-auto w-full resize-none rounded-lg px-4 py-2 text-lg font-medium text-custom-gray-200 outline-none"
+                "gray-dark-gray-background-gradient h-auto w-full resize-none rounded-lg px-4 py-2 font-medium text-custom-gray-200 outline-none max-md:text-sm md:text-lg"
               }
               ref={textareaRef}
               value={i18n.language === "en" ? description.en : description.pl}
@@ -61,19 +71,34 @@ const ProjectPage = () => {
             <div className={"flex h-auto w-full gap-4"}>
               <Link to={codeLink} target={"_blank"}>
                 <GithubCatIcon
-                  className={"size-8 cursor-pointer"}
+                  className={
+                    "cursor-pointer rounded-lg border-2 max-sm:size-8 sm:size-10"
+                  }
                   link={codeLink}
                 />
               </Link>
               {websiteLink && (
                 <Link to={websiteLink} target={"_blank"}>
-                  <GoToWebsiteIcon className={"size-8 cursor-pointer"} />
+                  <GoToWebsiteIcon
+                    className={
+                      "cursor-pointer rounded-lg border-2 max-sm:size-8 sm:size-10"
+                    }
+                  />
                 </Link>
               )}
             </div>
           </div>
 
-          <ProjectPageImagesList images={images} title={title} />
+          <div className={"flex h-auto w-full flex-col"}>
+            <ProjectPageImagesList images={images} title={title} />
+
+            {videos && (
+              <ProjectPageVideosList
+                videos={videos}
+                startIndex={images.length}
+              />
+            )}
+          </div>
         </div>
       </Section>
     </div>

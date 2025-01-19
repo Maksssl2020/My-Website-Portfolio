@@ -22,6 +22,19 @@ html {
 }
 
 .project-card-description-background-gradient {
+    @media(min-width: 768px) {
+        background-image: linear-gradient(
+                70deg,
+                #002584 25%,
+                #0029cc 50%,
+                #5c1e91 75%,
+                #420a66 100%
+        );
+    }
+
+}
+
+.project-page-image-video-background-gradient {
     background-image: linear-gradient(
             70deg,
             #002584 25%,

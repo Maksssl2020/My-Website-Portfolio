@@ -58,7 +58,7 @@ const ContactMeForm = ({ isVisible }) => {
         register={register("name", {
           required: t("contactMeNameError"),
         })}
-        errors={errors?.name?.message !== null}
+        errors={errors?.name?.message}
         errorLanguageKey={"contactMeNameError"}
       />
       <FormInput
@@ -72,7 +72,7 @@ const ContactMeForm = ({ isVisible }) => {
             message: t("contactMeEmailPatternError"),
           },
         })}
-        errors={errors?.email?.message !== null}
+        errors={errors?.email?.message}
         errorLanguageKey={
           errors?.email?.type === "required"
             ? "contactMeEmailRequiredError"
@@ -87,7 +87,7 @@ const ContactMeForm = ({ isVisible }) => {
         register={register("contactMessage", {
           required: t("contactMeMessageError"),
         })}
-        errors={errors?.contactMessage?.message !== null}
+        errors={errors?.contactMessage?.message}
         errorLanguageKey={"contactMeMessageError"}
       />
       <motion.button

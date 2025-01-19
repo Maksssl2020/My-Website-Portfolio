@@ -11,7 +11,7 @@ const SkillsList = ({ listData, isVisible }) => {
         exit={"hidden"}
         transition={{ staggerChildren: 0.2 }}
         className={
-          "grid grid-cols-3 justify-between gap-6 max-lg:w-[80%] lg:w-[950px] xl:w-[1000px]"
+          "grid justify-between gap-6 max-lg:w-[95%] max-lg:grid-cols-2 max-md:grid-cols-1 lg:w-[975px] lg:grid-cols-3 xl:w-[1000px]"
         }
       >
         {listData.map((data, index) => (

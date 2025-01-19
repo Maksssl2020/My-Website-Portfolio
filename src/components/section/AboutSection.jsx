@@ -14,7 +14,7 @@ const AboutSection = () => {
       <SectionBanner sectionNumber={"1"} title={t("aboutTitle")} />
       <div
         className={
-          "flex w-[950px] items-center rounded-l-full max-xl:flex-col max-xl:gap-20 xl:justify-between"
+          "flex items-center rounded-l-full max-xl:flex-col max-xl:gap-20 max-lg:w-[95%] lg:w-[950px] xl:justify-between"
         }
       >
         <motion.div

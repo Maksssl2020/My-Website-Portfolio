@@ -1,8 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import useTextareaResize from "../../hooks/useTextareaResize.js";
 import { useTranslation } from "react-i18next";
+import useWindowWidth from "../../hooks/useWindowWidth.js";
 
 const ProjectCard = ({ title, image, description, pageName, isFlipped }) => {
   const { t } = useTranslation();
@@ -10,28 +11,40 @@ const ProjectCard = ({ title, image, description, pageName, isFlipped }) => {
   const [isTextareaHovered, setIsTextAreaHovered] = useState(false);
   const textareaRef = useRef(null);
   const navigate = useNavigate();
+  const currentWindowWidth = useWindowWidth();
+  const isSmallScreen = currentWindowWidth < 768;
 
   useTextareaResize(textareaRef, description);
 
   return (
     <motion.div
-      className={`relative flex h-[380px] w-full flex-col items-center justify-between rounded-lg`}
+      className={`xs:h-min-[400px] relative flex w-full flex-col items-center justify-between rounded-lg max-md:h-[425px] max-sm:h-fit md:h-[315px] lg:h-[380px]`}
     >
       <div
         onMouseEnter={() => setIsImageContainerHovered(true)}
         onMouseLeave={() => setIsImageContainerHovered(false)}
-        className={`absolute flex h-[380px] w-[565px] cursor-pointer items-center justify-center overflow-hidden rounded-t-lg ${isFlipped ? "right-0" : "left-0"}`}
+        className={`absolute flex h-full cursor-pointer items-center justify-center overflow-hidden rounded-t-lg max-md:w-full md:w-[465px] lg:w-[565px] ${isFlipped ? "md:right-0" : "md:left-0"}`}
         onClick={() => navigate(pageName)}
       >
         <motion.div
-          animate={isImageContainerHovered ? { opacity: 0 } : { opacity: 0.3 }}
+          animate={
+            isSmallScreen
+              ? { opacity: 0.75 }
+              : isImageContainerHovered
+                ? { opacity: 0 }
+                : { opacity: 0.3 }
+          }
           transition={{ duration: 0.3 }}
           className={
-            "absolute z-10 h-full w-full rounded-lg bg-custom-blue-100"
+            "bg-custom-blue-300 absolute z-10 h-full w-full rounded-lg"
           }
         />
         <motion.img
-          animate={isImageContainerHovered ? { scale: 1.05 } : { scale: 1.0 }}
+          animate={
+            isImageContainerHovered && !isSmallScreen
+              ? { scale: 1.05 }
+              : { scale: 1.0 }
+          }
           transition={{ duration: 0.3 }}
           className={`h-full w-full rounded-lg object-cover`}
           src={image}
@@ -39,10 +52,10 @@ const ProjectCard = ({ title, image, description, pageName, isFlipped }) => {
         />
       </div>
       <div
-        className={`z-10 flex h-full w-[500px] flex-col justify-center gap-4 pl-4 ${isFlipped ? "mr-auto" : "ml-auto"}`}
+        className={`z-10 flex h-full flex-col justify-center gap-4 max-md:w-full max-md:px-4 max-sm:py-4 md:w-[425px] md:pl-4 lg:w-[500px] ${isFlipped ? "mr-auto" : "ml-auto"}`}
       >
         <h1
-          className={`text-2xl font-medium text-white ${isFlipped ? "mr-auto" : "ml-auto"}`}
+          className={`font-medium text-white max-md:text-2xl max-sm:text-xl md:text-2xl ${isFlipped ? "md:mr-auto" : "md:ml-auto"}`}
         >
           {title}
         </h1>
@@ -50,7 +63,7 @@ const ProjectCard = ({ title, image, description, pageName, isFlipped }) => {
           onMouseEnter={() => setIsTextAreaHovered(true)}
           onMouseLeave={() => setIsTextAreaHovered(false)}
           animate={
-            isTextareaHovered
+            isTextareaHovered && !isSmallScreen
               ? { boxShadow: "0px 8px 15px #420a66" }
               : { boxShadow: "0px 0px 0px #420a66" }
           }
@@ -61,7 +74,7 @@ const ProjectCard = ({ title, image, description, pageName, isFlipped }) => {
           ref={textareaRef}
           value={description}
           className={
-            "project-card-description-background-gradient h-auto w-full resize-none rounded-lg px-4 py-2 text-lg font-medium text-custom-gray-200 outline-none"
+            "project-card-description-background-gradient h-auto w-full resize-none rounded-lg py-2 font-medium text-custom-gray-200 outline-none max-md:bg-transparent max-sm:text-sm sm:text-lg md:px-4 md:text-sm lg:text-lg"
           }
         />
         <div className={"relative flex h-auto w-auto"}>

@@ -13,7 +13,7 @@ const ProjectsList = ({ listData, isVisible }) => {
         animate={isVisible && "visible"}
         exit={"hidden"}
         transition={{ staggerChildren: 0.2 }}
-        className={`flex h-auto w-[1000px] flex-col gap-6`}
+        className={`flex h-auto flex-col max-md:w-[95%] max-md:gap-6 md:w-[745px] md:gap-8 lg:w-[1000px] lg:gap-6`}
       >
         {listData.map((data, index) => (
           <motion.div

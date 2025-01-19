@@ -45,7 +45,7 @@ const ProjectPageImagesList = ({ images, title }) => {
               duration: 1.0,
             }}
             key={index}
-            className={`project-card-description-background-gradient flex h-auto w-[90%] justify-center rounded-lg p-4 ${index % 2 === 0 ? "ml-auto" : "mr-auto"}`}
+            className={`project-page-image-video-background-gradient flex h-auto justify-center rounded-lg max-lg:w-full max-sm:p-1 sm:p-2 md:p-3 lg:w-[90%] lg:p-4 ${index % 2 === 0 ? "lg:ml-auto" : "lg:mr-auto"}`}
           >
             <img
               key={index}

@@ -34,7 +34,7 @@ const Section = ({ id, children, setVisibility }) => {
     <section
       id={id}
       ref={sectionRef}
-      className={`flex min-h-[100vh] w-full flex-col items-center justify-center max-xs:gap-8 xs:gap-16 sm:gap-20 md:gap-28 lg:gap-32 ${id === "home" ? "-mt-[100px]" : "pt-[120px]"}`}
+      className={`flex min-h-[100vh] w-full flex-col items-center justify-center overflow-hidden max-xs:gap-8 xs:gap-16 sm:gap-20 md:gap-28 lg:gap-32 ${id === "home" ? "-mt-[100px]" : "pt-[120px]"}`}
     >
       {children}
     </section>

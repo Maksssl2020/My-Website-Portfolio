@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import HamburgerIcon from "../../icons/HamburgerIcon.jsx";
 import { AnimatePresence, motion } from "framer-motion";
 import CancelIcon from "../../icons/CancelIcon.jsx";
+import { Link } from "react-router-dom";
+import LinkedinIcon from "../../icons/LinkedinIcon.jsx";
+import GithubCatIcon from "../../icons/GithubCatIcon.jsx";
+import { useTranslation } from "react-i18next";
+import LanguageChangeButtons from "../button/LanguageChangeButtons.jsx";
 
-const HeaderAccordion = ({ navigationList, activeSection }) => {
+const HeaderAccordion = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const { t } = useTranslation();
 
   return (
-    <div className={"w-full flex flex-col"}>
-      <button
+    <div className={"relative flex flex-col overflow-hidden"}>
+      <motion.button
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        whileHover={{ borderColor: "#0066FF" }}
         onClick={() => setIsOpen(!isOpen)}
         className={
-          "max-sm:size-10 sm:size-12 md:size-14 border-2 rounded-xl flex justify-center items-center"
+          "flex items-center justify-center rounded-xl border-2 max-sm:size-8 sm:size-10"
         }
       >
         <AnimatePresence mode={"wait"}>
@@ -23,7 +33,8 @@ const HeaderAccordion = ({ navigationList, activeSection }) => {
               exit={{ opacity: 0 }}
             >
               <CancelIcon
-                className={"max-sm:size-8 sm:size-10 md:size-12 stroke-1"}
+                isHovered={isHovered}
+                className={"stroke-1 max-sm:size-6 sm:size-8"}
               />
             </motion.p>
           ) : (
@@ -34,54 +45,59 @@ const HeaderAccordion = ({ navigationList, activeSection }) => {
               exit={{ opacity: 0 }}
             >
               <HamburgerIcon
-                className={"max-sm:size-8 sm:size-10 md:size-12 stroke-1"}
+                isHovered={isHovered}
+                className={"stroke-1 max-sm:size-6 sm:size-8"}
               />
             </motion.p>
           )}
         </AnimatePresence>
-      </button>
+      </motion.button>
       <motion.div
-        initial={{ opacity: 0, height: 0, y: 100 }}
+        initial={{ opacity: 0, height: 0, y: -55, x: -100 }}
         animate={
           isOpen
-            ? { opacity: 1, height: "100vh", y: 100 }
+            ? { opacity: 1, height: "200px", y: 55, x: -100 }
             : { opacity: 0, height: 0 }
         }
-        transition={{ duration: 0.5 }}
-        className={"w-full fixed inset-0 overflow-hidden bg-[#1A1A1A]"}
+        transition={{ duration: 0.3 }}
+        className={
+          "gray-dark-gray-background-gradient fixed flex w-[150px] flex-col items-center justify-between overflow-hidden rounded-lg border-2 border-custom-gray-100 p-2"
+        }
       >
-        <div className={"p-6 gap-8 flex flex-col uppercase"}>
-          <h1
-            className={
-              "3xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl ml-2 font-bold"
-            }
+        <div className={"flex w-full justify-center gap-4"}>
+          <Link
+            to={"https://www.linkedin.com/in/maksymilianleszczynski/"}
+            target={"_blank"}
           >
-            MENU
-          </h1>
-          <ul className={"w-full flex flex-col gap-2 relative"}>
-            {navigationList.map((data, index) => (
-              <motion.a
-                key={index}
-                whileHover={{
-                  color: "#4386F4",
-                  cursor: "pointer",
-                  background: "#282828",
-                }}
-                style={{ color: "#FFFFFF", background: "#1A1A1A" }}
-                animate={
-                  activeSection === data.toLowerCase()
-                    ? { color: "#4386F4", background: "#282828" }
-                    : { color: "#FFFFFF", background: "#1A1A1A" }
-                }
-                href={`#${data.toLowerCase()}`}
-                className={
-                  "3xs:text-xs sm:text-sm md:text-lg lg:text-xl font-medium w-full rounded-xl px-2 py-4"
-                }
-              >
-                {data}
-              </motion.a>
-            ))}
-          </ul>
+            <LinkedinIcon
+              className={"size-10 rounded-lg border-2 fill-white"}
+            />
+          </Link>
+          <Link to={"https://github.com/Maksssl2020"} target={"_blank"}>
+            <GithubCatIcon
+              className={"size-10 rounded-lg border-2 fill-white"}
+            />
+          </Link>
+        </div>
+
+        <span className={"h-0.5 w-full rounded-full bg-custom-gray-100"} />
+
+        <LanguageChangeButtons />
+
+        <span className={"h-0.5 w-full rounded-full bg-custom-gray-100"} />
+
+        <div className={"relative flex h-auto w-[125px] text-lg"}>
+          <div
+            className={`absolute -z-10 h-[40px] w-[125px] rounded-lg bg-custom-blue-100`}
+          />
+          <a href={"assets/resume-english.pdf"} target={"_blank"}>
+            <motion.button
+              whileHover={{ x: "-3%", y: "-6%" }}
+              className={`h-[40px] w-[125px] rounded-lg border border-custom-blue-100 bg-custom-gray-100 px-6 font-normal text-custom-blue-100`}
+            >
+              {t("resumeButton")}
+            </motion.button>
+          </a>
         </div>
       </motion.div>
     </div>

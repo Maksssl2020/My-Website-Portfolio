@@ -2,19 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import LinkedinIcon from "../../icons/LinkedinIcon.jsx";
-import GithubCatIcon2 from "../../icons/GithubCatIcon2.jsx";
+import GithubCatIcon from "../../icons/GithubCatIcon.jsx";
 import { useTranslation } from "react-i18next";
+import HeaderAccordion from "../accordion/HeaderAccordion.jsx";
+import LanguageChangeButtons from "../button/LanguageChangeButtons.jsx";
 
 const Header = ({ isVisible }) => {
-  const { i18n, t } = useTranslation();
-  const [isLinkedinIconHovered, setIsLinkedinIconHovered] = useState(false);
-  const [isGithubIconHovered, setIsGithubIconHovered] = useState(false);
-  const [chosenLanguage, setChosenLanguage] = useState(i18n.language);
-
-  const handleChangeLanguage = (languageName) => {
-    setChosenLanguage(languageName);
-    i18n.changeLanguage(languageName);
-  };
+  const { t } = useTranslation();
 
   return (
     <motion.header
@@ -30,7 +24,7 @@ const Header = ({ isVisible }) => {
         <img
           src={"assets/Logo.svg"}
           alt={"site-logo"}
-          className={"size-[80px]"}
+          className={"max-sm:size-[60px] sm:size-[70px] lg:size-[80px]"}
         />
         <motion.h2
           animate={{
@@ -56,7 +50,16 @@ const Header = ({ isVisible }) => {
         >
           Maksymilian Leszczyński
         </motion.h2>
-        <div className={"ml-auto flex items-center max-xs:gap-2 xs:gap-4"}>
+
+        <div className={"ml-auto md:hidden"}>
+          <HeaderAccordion />
+        </div>
+
+        <div
+          className={
+            "ml-auto flex items-center max-md:hidden max-xs:gap-2 xs:gap-4"
+          }
+        >
           <div className={"relative ml-6 flex h-auto w-auto text-lg"}>
             <div
               className={`absolute -z-10 h-[40px] w-[125px] rounded-lg bg-custom-blue-100`}
@@ -73,50 +76,20 @@ const Header = ({ isVisible }) => {
 
           <span className={"h-10 w-0.5 rounded-full bg-white"} />
 
-          <motion.button
-            animate={
-              chosenLanguage === "en"
-                ? { color: "#0066FF", borderColor: "#0066FF" }
-                : { color: "#FFFFFF", borderColor: "#FFFFFF" }
-            }
-            onClick={() => handleChangeLanguage("en")}
-            className={"size-10 rounded-lg border-2"}
-          >
-            EN
-          </motion.button>
-          <motion.button
-            animate={
-              chosenLanguage === "pl"
-                ? { color: "#0066FF", borderColor: "#0066FF" }
-                : { color: "#FFFFFF", borderColor: "#FFFFFF" }
-            }
-            onClick={() => handleChangeLanguage("pl")}
-            className={"size-10 rounded-lg border-2"}
-          >
-            PL
-          </motion.button>
+          <LanguageChangeButtons />
 
           <span className={"h-10 w-0.5 rounded-full bg-white"} />
 
           <Link
-            onMouseEnter={() => setIsLinkedinIconHovered(true)}
-            onMouseLeave={() => setIsLinkedinIconHovered(false)}
             to={"https://www.linkedin.com/in/maksymilianleszczynski/"}
             target={"_blank"}
           >
             <LinkedinIcon
-              isHovered={isLinkedinIconHovered}
               className={"size-10 rounded-lg border-2 fill-white"}
             />
           </Link>
-          <Link
-            onMouseEnter={() => setIsGithubIconHovered(true)}
-            onMouseLeave={() => setIsGithubIconHovered(false)}
-            to={"https://github.com/Maksssl2020"}
-            target={"_blank"}
-          >
-            <GithubCatIcon2
-              isHovered={isGithubIconHovered}
+          <Link to={"https://github.com/Maksssl2020"} target={"_blank"}>
+            <GithubCatIcon
               className={"size-10 rounded-lg border-2 fill-white"}
             />
           </Link>
