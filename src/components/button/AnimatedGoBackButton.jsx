@@ -34,7 +34,7 @@ const AnimatedGoBackButton = () => {
         handleHover(false);
       }}
       className={
-        "fixed top-[50%] ml-4 mr-auto flex cursor-pointer items-center gap-4 rounded-full max-sm:size-10 sm:h-[54px] sm:w-[128px] md:h-[58px] md:w-[148px]"
+        "fixed top-[50%] z-10 ml-4 mr-auto flex cursor-pointer items-center gap-4 rounded-full max-sm:size-10 sm:h-[54px] sm:w-[128px] md:h-[58px] md:w-[148px]"
       }
       onClick={() => {
         navigate("/My-Website-Portfolio/");

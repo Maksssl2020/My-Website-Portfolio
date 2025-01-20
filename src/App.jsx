@@ -4,6 +4,7 @@ import AppLayout from "./layout/AppLayout.jsx";
 import Home from "./pages/Home.jsx";
 import ProjectPage from "./pages/ProjectPage.jsx";
 import PageAnimation from "./Animations/PageAnimation.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 function App() {
   const router = createBrowserRouter([
@@ -19,10 +20,18 @@ function App() {
           ),
         },
         {
-          path: "/My-Website-Portfolio/:projectName",
+          path: "/My-Website-Portfolio/Project/:projectName",
           element: (
             <PageAnimation>
               <ProjectPage />
+            </PageAnimation>
+          ),
+        },
+        {
+          path: "*",
+          element: (
+            <PageAnimation>
+              <NotFound />
             </PageAnimation>
           ),
         },

@@ -24,7 +24,7 @@ const ProjectCard = ({ title, image, description, pageName, isFlipped }) => {
         onMouseEnter={() => setIsImageContainerHovered(true)}
         onMouseLeave={() => setIsImageContainerHovered(false)}
         className={`absolute flex h-full cursor-pointer items-center justify-center overflow-hidden rounded-t-lg max-md:w-full md:w-[465px] lg:w-[565px] ${isFlipped ? "md:right-0" : "md:left-0"}`}
-        onClick={() => navigate(pageName)}
+        onClick={() => navigate(`Project/${pageName}`)}
       >
         <motion.div
           animate={
@@ -36,7 +36,7 @@ const ProjectCard = ({ title, image, description, pageName, isFlipped }) => {
           }
           transition={{ duration: 0.3 }}
           className={
-            "bg-custom-blue-300 absolute z-10 h-full w-full rounded-lg"
+            "absolute z-10 h-full w-full rounded-lg bg-custom-blue-300"
           }
         />
         <motion.img
@@ -86,7 +86,7 @@ const ProjectCard = ({ title, image, description, pageName, isFlipped }) => {
               isFlipped ? { x: "2%", y: "-4%" } : { x: "-2%", y: "-4%" }
             }
             className={`mt-6 h-[45px] w-[150px] rounded-sm border-2 border-custom-blue-100 bg-custom-black-100 px-6 py-2 font-medium text-custom-blue-100 ${isFlipped ? "mr-auto" : "ml-auto"}`}
-            onClick={() => navigate(pageName)}
+            onClick={() => navigate(`Project/${pageName}`)}
           >
             {t("showMoreButton")}
           </motion.button>

@@ -92,7 +92,7 @@ const HeaderAccordion = ({ isHeaderVisible }) => {
 
         <span className={"h-0.5 w-full rounded-full bg-custom-gray-100"} />
 
-        <LanguageChangeButtons />
+        <LanguageChangeButtons className={"size-10"} />
 
         <span className={"h-0.5 w-full rounded-full bg-custom-gray-100"} />
 

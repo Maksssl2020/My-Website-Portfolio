@@ -49,7 +49,7 @@ const ProjectPageImagesList = ({ images, title }) => {
           >
             <img
               key={index}
-              src={image}
+              src={`../${image}`}
               alt={`${title}${index}`}
               className={`w-full rounded-lg`}
             />

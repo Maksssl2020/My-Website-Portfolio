@@ -5,7 +5,7 @@ import useWindowWidth from "../../hooks/useWindowWidth.js";
 
 const HomeNavigationSection = ({ location }) => {
   const { i18n } = useTranslation();
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeSection, setActiveSection] = useState();
   const currentWindowWidth = useWindowWidth();
   const carouselRef = useRef();
 
@@ -27,14 +27,11 @@ const HomeNavigationSection = ({ location }) => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = headerData.findIndex(
-              (section) => section.id.toLowerCase() === entry.target.id,
-            );
-            setActiveIndex(index);
+            setActiveSection(entry.target.id);
           }
         });
       },
-      { threshold: currentWindowWidth >= 700 ? 0.4 : 0.25 },
+      { threshold: 0.3 },
     );
 
     sections.forEach((section) => {
@@ -46,25 +43,33 @@ const HomeNavigationSection = ({ location }) => {
         observer.unobserve(section);
       });
     };
-  }, [activeIndex, currentWindowWidth, headerData, location]);
+  }, [activeSection, currentWindowWidth, location]);
 
   useEffect(() => {
     if (carouselRef.current) {
       const carousel = carouselRef.current;
-      const carouselElem = carousel.children[activeIndex];
+      const children = [...carousel.children];
+      const activeItem = children.find(
+        (item) => item.id.toLowerCase() === activeSection,
+      );
 
-      if (carouselElem) {
-        const offset =
-          carouselElem.offsetLeft +
-          carouselElem.offsetWidth / 2 -
-          carousel.offsetWidth / 2;
-        carousel.scrollTo({
-          left: offset,
-          behavior: "smooth",
-        });
+      if (activeItem) {
+        const activeItemWidth = activeItem.offsetWidth;
+        const activeItemLeft = activeItem.offsetLeft;
+        const carouselWidth = carousel.offsetWidth;
+
+        const scrollPosition =
+          activeItemLeft + activeItemWidth / 2 - carouselWidth / 2;
+
+        if (scrollPosition !== carousel.scrollLeft) {
+          carousel.scrollTo({
+            left: scrollPosition,
+            behavior: "smooth",
+          });
+        }
       }
     }
-  }, [activeIndex]);
+  }, [activeSection]);
 
   return (
     <AnimatePresence>
@@ -80,23 +85,27 @@ const HomeNavigationSection = ({ location }) => {
         }
       >
         {headerData.map((data, index) => (
-          <div
+          <li
+            id={data.id}
+            key={index}
             className={
               "relative flex h-auto w-auto items-center justify-center"
             }
-            key={index}
           >
-            <motion.li
-              animate={activeIndex === index ? { opacity: 1 } : { opacity: 0 }}
+            <motion.div
+              animate={
+                activeSection === data.id.toLowerCase()
+                  ? { opacity: 1 }
+                  : { opacity: 0 }
+              }
               transition={{ duration: 0.3 }}
               className={
                 "pink-violet-blue-background-gradient absolute h-full w-full rounded-full"
               }
             />
             <motion.a
-              key={index}
               whileHover={
-                activeIndex !== index
+                activeSection !== data.id.toLowerCase()
                   ? {
                       background: "#303030",
                     }
@@ -108,7 +117,7 @@ const HomeNavigationSection = ({ location }) => {
             >
               {data.name}
             </motion.a>
-          </div>
+          </li>
         ))}
       </motion.ul>
     </AnimatePresence>

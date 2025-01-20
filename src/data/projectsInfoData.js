@@ -11,6 +11,9 @@ export const projectsInfoData = [
       "https://www.youtube.com/embed/X8s14RWS3Vo",
       "https://www.youtube.com/embed/5zDD-gQ92nY",
       "https://www.youtube.com/embed/VDFJwrGuxEU",
+      "https://www.youtube.com/embed/wJIIi4-iHEw",
+      "https://www.youtube.com/embed/4dbdxa-kTo4",
+      "https://www.youtube.com/embed/TotnMLGIs2Q",
     ],
     description: {
       en: "This is a comprehensive application for managing medical clinics, designed to streamline operations related to doctors, patients, and associated medical data. Built with C#, WPF, Entity Framework (DataBase First), and SQL Server, the app leverages the MVVM pattern for a clean separation of concerns and robust data binding.",
@@ -114,7 +117,14 @@ export const projectsInfoData = [
       pl: "Gra w Wisielca z GUI",
     },
     images: ["assets/HangmanProject/Hangman-Game-With-GUI.png"],
-    videos: [],
+    videos: [
+      "https://www.youtube.com/embed/gTiXbNpU0ws",
+      "https://www.youtube.com/embed/pHAWnC4BTZs",
+      "https://www.youtube.com/embed/FvKAB7R45qs",
+      "https://www.youtube.com/embed/SdF9AvibcuY",
+      "https://www.youtube.com/embed/OrwpjR4EOc4",
+      "https://www.youtube.com/embed/59f6Tgtr-4k",
+    ],
     description: {
       en: "Play hangman with a friend while enjoying real-time chat! This multiplayer game is developed using Java and Java Swing. The communication between players is established by Java Server Sockets.",
       pl: "Zagraj w wisielca ze znajomym i korzystaj z czatu w czasie rzeczywistym! Ta gra wieloosobowa została stworzona przy użyciu Java i Java Swing. Komunikacja między graczami odbywa się za pomocą Java Server Sockets.",

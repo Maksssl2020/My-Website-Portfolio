@@ -22,7 +22,7 @@ const Header = ({ isVisible }) => {
         }
       >
         <img
-          src={"assets/Logo.svg"}
+          src={"./assets/Logo.svg"}
           alt={"site-logo"}
           className={"max-sm:size-[60px] sm:size-[70px] lg:size-[80px]"}
         />
