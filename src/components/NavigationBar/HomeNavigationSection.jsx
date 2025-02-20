@@ -81,7 +81,7 @@ const HomeNavigationSection = ({ location }) => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
         className={
-          "flex w-full justify-between font-bold uppercase max-md:gap-2 max-md:overflow-x-hidden max-md:scroll-smooth max-sm:text-sm"
+          "flex w-full justify-between font-bold uppercase max-md:gap-2 max-md:overflow-x-hidden max-md:scroll-smooth max-md:text-sm"
         }
       >
         {headerData.map((data, index) => (
@@ -100,7 +100,7 @@ const HomeNavigationSection = ({ location }) => {
               }
               transition={{ duration: 0.3 }}
               className={
-                "pink-violet-blue-background-gradient absolute h-full w-full rounded-full"
+                "pink-violet-blue-background-gradient absolute flex h-full w-full justify-center rounded-full"
               }
             />
             <motion.a
@@ -113,7 +113,7 @@ const HomeNavigationSection = ({ location }) => {
               }
               href={`#${data.id.toLowerCase()}`}
               style={{ color: "#FFFFFF" }}
-              className={`z-10 rounded-full px-6 py-2`}
+              className={`z-10 flex justify-center rounded-full px-6 py-2 max-sm:min-w-[100px]`}
             >
               {data.name}
             </motion.a>

@@ -1,6 +1,33 @@
 export const projectsInfoData = [
   {
     title: {
+      en: "Flickit Web Application",
+      pl: "Flickit - Aplikacja Internetowa",
+    },
+    images: ["assets/FlickitProject/F_P1.png"],
+    videos: [
+      "https://www.youtube.com/embed/Gp2DMzBsYn0",
+      "https://www.youtube.com/embed/4xZy_7mRlws",
+      "https://www.youtube.com/embed/dGwd969GYTM",
+      "https://www.youtube.com/embed/iorb19rst4A",
+      "https://www.youtube.com/embed/boE_-LOL44I",
+      "https://www.youtube.com/embed/xCfghzKXxo0",
+      "https://www.youtube.com/embed/BCfMVXAY4nc",
+      "https://www.youtube.com/embed/QFVNny8HQ0g",
+      "https://www.youtube.com/embed/n4hsNJplbog",
+      "https://www.youtube.com/embed/xJdQvqGGxb4",
+    ],
+    description: {
+      en: "A lightweight social media platform inspired by Tumblr, allowing users to create, edit, and delete posts, featuring support for images, links, and tags. The application implements authentication, password recovery via email, and pagination for better content navigation. Built with PHP, MySQL, and JavaScript, it follows an REST API-like architecture.",
+      pl: "Lekka platforma społecznościowa inspirowana Tumblr, która umożliwia użytkownikom tworzenie, edytowanie i usuwanie postów z obsługą obrazów, linków i tagów. Aplikacja implementuje uwierzytelnianie, odzyskiwanie hasła przez e-mail oraz paginację dla lepszej nawigacji. Zbudowana w PHP, MySQL i JavaScript, korzysta z architektury zbliżonej do REST API.",
+    },
+    codeLink:
+      "https://github.com/Maksssl2020/Php-Small-Community-Service-App.git",
+    tags: ["PHP", "MySql", "JavaScript", "HTML", "CSS", "REST API"],
+    pageName: "Flickit-Project",
+  },
+  {
+    title: {
       en: "Medica Desktop Application",
       pl: "Medica - Aplikacja Komputerowa",
     },

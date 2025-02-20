@@ -34,7 +34,7 @@ const AnimatedGoBackButton = () => {
         handleHover(false);
       }}
       className={
-        "fixed top-[50%] z-10 ml-4 mr-auto flex cursor-pointer items-center gap-4 rounded-full max-sm:size-10 sm:h-[54px] sm:w-[128px] md:h-[58px] md:w-[148px]"
+        "fixed top-[50%] z-10 ml-4 mr-auto flex cursor-pointer items-center gap-4 rounded-full max-sm:size-12 sm:h-[54px] sm:w-[128px] md:h-[58px] md:w-[148px]"
       }
       onClick={() => {
         navigate("/My-Website-Portfolio/");
@@ -96,7 +96,7 @@ const AnimatedGoBackButton = () => {
             "flex h-full w-full items-center justify-center rounded-full bg-custom-gray-100"
           }
         >
-          <ArrowLeftIcon className={"max-sm:size-6"} isHovered={isHovered} />
+          <ArrowLeftIcon className={"max-sm:size-7"} isHovered={isHovered} />
         </motion.div>
       )}
     </motion.button>

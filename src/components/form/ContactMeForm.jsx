@@ -9,6 +9,10 @@ const ContactMeForm = ({ isVisible }) => {
   const { t } = useTranslation();
   const form = useRef();
 
+  const serviceId = import.meta.env.VITE_EMAIL_JS_SERVICE_ID;
+  const emailTemplateId = import.meta.env.VITE_EMAIL_JS_EMAIL_TEMPLATE_ID;
+  const publicKey = import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY;
+
   const {
     register,
     handleSubmit,
@@ -20,15 +24,15 @@ const ContactMeForm = ({ isVisible }) => {
   const sendEmail = () => {
     emailjs
       .send(
-        "service_rx4hmga",
-        "template_4fa6pqy",
+        serviceId,
+        emailTemplateId,
         {
           user_name: getValues().name,
           user_email: getValues().email,
           message: getValues().contactMessage,
         },
         {
-          publicKey: "coSWWXaO8Q6sYVoNv",
+          publicKey: publicKey,
         },
       )
       .then(

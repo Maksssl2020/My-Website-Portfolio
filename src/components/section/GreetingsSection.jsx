@@ -39,7 +39,7 @@ const GreetingsSection = () => {
       <div className={"flex flex-col gap-4 text-center text-white"}>
         <h1
           className={
-            "font-medium 3xs:text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+            "font-medium 3xs:text-xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
           }
         >
           {t("greetingFirstLine")}
@@ -47,7 +47,7 @@ const GreetingsSection = () => {
         </h1>
         <h1
           className={
-            "font-medium 3xs:text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+            "font-medium 3xs:text-xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
           }
         >
           <motion.span
